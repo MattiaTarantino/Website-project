@@ -94,7 +94,7 @@ body {
 
 form {
   position: relative;
-  width: 50rem;
+  max-width: 50rem;
   background: var(--color-brand);
   border-radius: var(--rad);
   margin-left: auto;
@@ -153,14 +153,17 @@ label {
 }
 
 .spiegazione{
+    flex: 2 0 300px;
     margin-top: 75px;
     margin-left: auto;
     margin-right: auto;
-    width: 1170px;
+    max-width: 1200px;
     padding: 20px;
     border-radius: 10px;
     background-color: #176691;
 
+
+    text-align: center;
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 2rem;
     color: #EB6A02;
