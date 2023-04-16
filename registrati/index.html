@@ -5,11 +5,58 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
         <title>ShopWise</title>
     </head>
     <body>
         <div class="header">
-            <a href="/" class="logo"><img src="/images/ShopWise-logo-header.png"></a>
+            <a href="/" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+        </div>
+        <div class="text-center">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-9">
+                            <h1 class="p-5 mb-5">Registrati a ShopWise!</h1>
+                            <div class="card" style="border-radius: 15px; background-color:lightgrey">
+                                <div class="card-body p-5">
+                                    <form action="registrati.php" method="post" name="form_registrazione" class="form-registr" onsubmit="controllo_negoziante()">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" class="form-control form-control-lg" name="nome" placeholder="*Nome:" required autofocus>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" class="form-control form-control-lg" name="cognome" placeholder="*Cognome:" required>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" class="form-control form-control-lg" name="utente" placeholder="*Nome Utente:" required>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="email" class="form-control form-control-lg" name="email" placeholder="*Email:" required>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" class="form-control form-control-lg" name="pwd" placeholder="*Inserisci una password:" required>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" class="form-control form-control-lg" name="repwd" placeholder="*Reinserisci la password:" required>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" class="form-control form-control-lg" name="indirizzo" placeholder="*Indirizzo:" required>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="number" class="form-control form-control-lg" name="codice" placeholder="Codice Aziendale:">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <br>                <!--metter a posto con bootstrap-->
+                            <br>
+                            <div class="justify-content-center">
+                               <button type="button" class="btn btn-primary btn-lg">Registrati</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
