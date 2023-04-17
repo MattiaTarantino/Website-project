@@ -5,9 +5,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
         <title>ShopWise</title>
     </head>
     <body>
+        <div class="container">  
         <div class="header">
             <a href="/" class="logo"><img src="images/ShopWise-logo-header.png"></a>
             <div class="header-right">
@@ -15,18 +17,16 @@
                 <a href="registrati/index.html" class="registrati">Registrati</a>
             </div>
         </div>
+        <div class="sliding-background"></div>
         <img class="logo-homepage" src="images/ShopWise logo.png">
-        <form onsubmit="event.preventDefault();" role="search">
-            <label for="search">Cerca</label>
-            <input id="search" type="search" placeholder="Cerca un prodotto..." autofocus required />
-            <button class="vai" type="submit">Vai</button>    
-        </form>
+            <form onsubmit="event.preventDefault();" role="search">
+                <label for="search">Cerca</label>
+                <input id="search" type="search" placeholder="Cerca un prodotto..." autofocus required />
+                <button class="vai" type="submit">Vai</button>    
+            </form>
         <div class="spiegazione">
-            Cerca il prodotto di tuo interesse e ShopWise ti aiuterà a trovare l'offerta migliore per te!
+                Cerca il prodotto di tuo interesse e ShopWise ti aiuterà a trovare l'offerta migliore per te!
         </div>
+    </div>
     </body>
 </html>
-
-
-
-
