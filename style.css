@@ -13,12 +13,20 @@
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
 
+@keyframes animatedBackground {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+
 body { 
   margin: 0;
   background-image: linear-gradient(rgb(196, 196, 237), rgba(255, 255, 0, 0.5)),
                     url("images/background-homepage.jpeg");
   background-size: cover;
   background-attachment: fixed;
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+  animation: animatedBackground 40s linear infinite;
 }
 
 .header {

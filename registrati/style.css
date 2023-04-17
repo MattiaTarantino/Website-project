@@ -1,25 +1,35 @@
 body { 
-    margin: 0;
-  }
+  margin: 0;
+}
   
-  .header {
-    overflow: hidden;
-    background-color: #176791;
-  }
+.header {
+  overflow: hidden;
+  background-color: #176791;
+}
   
+.header a {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  float: left;
+  padding: 12px;
+}
+  
+@media screen and (max-width: 500px) {
   .header a {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    float: left;
-    padding: 12px;
+    float: none;
+    display: block;
+    text-align: left;
   }
+}
   
-  @media screen and (max-width: 500px) {
-    .header a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-  }
-  
+.btn-primary {
+  background-color: white !important;
+  color: #EB6A02 !important;
+  transition: background-color 1s, color 1s !important;
+}
+
+.btn-primary:hover{
+  background-color: #EB6A02 !important;
+  color: white !important;
+}
