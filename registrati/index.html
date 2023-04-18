@@ -12,47 +12,43 @@
         <div class="header">
             <a href="/" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         </div>
-        <div class="text-center">
-            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-                <div class="container h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-12 col-md-9 col-lg-7 col-xl-9">
-                            <h1 class="p-5 mb-5">Registrati a ShopWise!</h1>
-                            <div class="card" style="border-radius: 15px; background-color:lightgrey">
-                                <div class="card-body p-5">
-                                    <form action="registrati.php" method="post" name="form_registrazione" class="form-registr" onsubmit="controllo_negoziante()">
-                                        <div class="form-outline mb-4">
-                                            <input type="text" class="form-control form-control-lg" name="nome" placeholder="Nome:" required autofocus>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="text" class="form-control form-control-lg" name="cognome" placeholder="Cognome:" required>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="text" class="form-control form-control-lg" name="utente" placeholder="Nome Utente:" required>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="email" class="form-control form-control-lg" name="email" placeholder="Email:" required>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="password" class="form-control form-control-lg" name="pwd" placeholder="Inserisci una password:" required>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="password" class="form-control form-control-lg" name="repwd" placeholder="Reinserisci la password:" required>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="text" class="form-control form-control-lg" name="indirizzo" placeholder="Indirizzo:" required>
-                                        </div>
-                                        <div class="form-outline mb-4">
-                                            <input type="number" class="form-control form-control-lg" name="codice" placeholder="Codice Aziendale:">
-                                        </div>
-                                    </form>
-                                </div>
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">                                                                       <!--Setup per lavorare con grid di bootstrap; h-100 = altezza 100%-->
+                <div class="row d-flex justify-content-center align-items-center h-100">                        <!--Creazione della riga: d-flex per controllare layout, allineamento e spazi; justify-content-center per giustificare i campi al centro (orizzontale); align-items-center per mettere gli elementi al centro dell'altezza della riga (verticale), h-100 = altezza 100%-->
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-9">                                             <!--Comportamento della finestra a differenti grandezze di schermo (breakpoints di bootstrap); x-small, medium, large, extra large - [numero di elementi per colonna a quel breakpoint]-->
+                        <h1 class="text-center p-5 mb-5">Registrati a ShopWise!</h1>                            <!--p = padding su tutti i lati; mb = margin bottom-->
+                        <div class="card" style="border-radius: 15px; background-color:lightgrey">
+                            <div class="card-body p-5">                                                         <!--card-body è il posizionamento di ciò che vi è all'interno dell'elemento card-->
+                                <form action="registrati.php" method="post" name="form_registrazione" class="form-registr" onsubmit="controllo_negoziante()">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" name="nome" placeholder="Nome:" required autofocus>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" name="cognome" placeholder="Cognome:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" name="utente" placeholder="Nome Utente:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="email" class="form-control form-control-lg" name="email" placeholder="Email:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" class="form-control form-control-lg" name="pwd" placeholder="Inserisci una password:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" class="form-control form-control-lg" name="repwd" placeholder="Reinserisci la password:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" name="indirizzo" placeholder="Indirizzo:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="number" class="form-control form-control-lg" name="codice" placeholder="Codice Aziendale:">
+                                    </div>
+                                </form>
                             </div>
-                            <br>                <!--metter a posto con bootstrap-->
-                            <br>
-                            <div class="justify-content-center">
-                               <button type="button" class="btn btn-primary btn-lg">Registrati</button>
-                            </div>
+                        </div>
+                        <div class="row mx-auto col-2 my-5">         <!--row?-->                                  <!--m(margine)[coordinata spaziale]-[numero] = aggiunge uno spazio grande quanto il numero specificato dopo il - nella coordinata specificata; mx-auto = rimane sempre centrale (x = destra e sinistra); col-2 = uso numero di colonne per determinare la grandezza del bottone-->
+                            <button type="button" class="btn btn-primary btn-lg">Registrati</button>             <!--SISTEMARE SCRITTA PER LA RESPONSIVENESS-->                   <!--btn-primary = setta il colore primario di bootstrap sul bottone (sfondo e bordo azzurro con scritta bianca); btn-lg = botton large-->
                         </div>
                     </div>
                 </div>
