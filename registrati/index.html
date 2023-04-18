@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="card-body p-5">                                                         <!--card-body è il posizionamento di ciò che vi è all'interno dell'elemento card-->
-                                <form action="registrati.php" method="post" name="form_registrazione" class="form-registr" onsubmit="return controllo_negoziante();">
+                                <form action="registrati.php" method="post" name="form_registrazione" id="idform" class="form-registr" onsubmit="return controllo_negoziante();">
                                     <div class="form-outline mb-4">
                                         <input type="text" class="form-control form-control-lg" name="nome" placeholder="Nome:" required autofocus>
                                     </div>
@@ -78,12 +78,11 @@
                                     <div class="form-outline mb-4">
                                         <input type="number" class="form-control form-control-lg" name="codice" placeholder="Codice Aziendale:">
                                     </div>
-                                    <input type="submit" value="prova">
                                 </form>
                             </div>
                         </div>
                         <div class="row mx-auto col-2 my-5">         <!--row?-->                                  <!--m(margine)[coordinata spaziale]-[numero] = aggiunge uno spazio grande quanto il numero specificato dopo il - nella coordinata specificata; mx-auto = rimane sempre centrale (x = destra e sinistra); col-2 = uso numero di colonne per determinare la grandezza del bottone-->
-                            <button class="btn btn-primary btn-lg" type="submit">Registrati</button>             <!--SISTEMARE SCRITTA PER LA RESPONSIVENESS-->                   <!--btn-primary = setta il colore primario di bootstrap sul bottone (sfondo e bordo azzurro con scritta bianca); btn-lg = botton large-->
+                            <input type="submit" class="btn btn-primary btn-lg" form="idform" value="Registrati"></button>             <!--SISTEMARE SCRITTA PER LA RESPONSIVENESS-->                   <!--btn-primary = setta il colore primario di bootstrap sul bottone (sfondo e bordo azzurro con scritta bianca); btn-lg = botton large-->
                         </div>
                     </div>
                 </div>
