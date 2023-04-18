@@ -8,6 +8,12 @@
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
         <title>ShopWise</title>
         <script type="text/javascript" language="javascript">
+            function inizializzaCodice() {
+                window.document.form_registrazione.codice.style.visibility = "hidden"
+            }
+            function aggiungiCampo() {
+                window.document.form_registrazione.codice.style.visibility = "visible"
+            }
             function controlloPassword() {
                 while (document.form_registrazione.pwd.value != document.form_registrazione.repwd.value) {
                         alert("Le password non corrispondono, reinserire la password");
@@ -30,7 +36,7 @@
             }
         </script>
     </head>
-    <body>
+    <body onload="inizializzaCodice();">
         <div class="header">
             <a href="/" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         </div>
@@ -41,14 +47,10 @@
                         <h1 class="text-center p-5 mb-5">Registrati a ShopWise!</h1>                            <!--p = padding su tutti i lati; mb = margin bottom-->
                         <div class="card" style="border-radius: 15px; background-color:lightgrey">
                             <div class="card-header">
-                                <ul class="nav nav-tabs card-header-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="true" href="#">Utente</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Azienda</a>
-                                    </li>
-                                </ul>
+                                <div class="nav nav-tabs nav-justified">
+                                    <button class="nav-link button" name="bottoneUtente" value="Utente" onclick="return inizializzaCodice();">Utente</button>
+                                    <button class="nav-link button" name="bottoneUtente" value="Azienda" onclick="return aggiungiCampo();">Azienda</button>
+                                </div>
                             </div>
                             <div class="card-body p-5">                                                         <!--card-body è il posizionamento di ciò che vi è all'interno dell'elemento card-->
                                 <form action="registrati.php" method="post" name="form_registrazione" class="form-registr" onsubmit="return controllo_negoziante();">
