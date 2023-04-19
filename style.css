@@ -53,6 +53,7 @@ body {
 
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-right: 26px;
   width: 130px;
   height: 27px;
   border: none;
@@ -71,14 +72,6 @@ body {
 .header-right a:hover{
   background-color: #EB6A02;
   color: white;
-}
-
-.accedi{
-  margin-right: 26px;
-}
-
-.registrati{
-  margin-right: 28px;
 }
 
 @media screen and (max-width: 500px) {

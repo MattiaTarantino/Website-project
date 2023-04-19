@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ShopWise</title>
+        <style> 
+            body { 
+                margin: 0;
+            }
+
+            .header {
+                overflow: hidden;
+                background-color: #176791;
+            }
+
+            .header a {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: 10px;
+                float: left;
+                padding: 12px;
+            }
+
+            @media screen and (max-width: 500px) {
+                .header a {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                }
+            }
+    </style>
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.html" class="logo"><img src="images/ShopWise-logo-header.png"></a>
+        </div>
+        <div class="testo login">
+            Login su ShopWise!
+        </div>
+        <form action="./php/login.php" method ="POST" role="login">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="Email" autofocus required />
+            <label for="password">password</label>
+            <input id="password" type="password" name="password" placeholder="password" autofocus required />
+            <input type="submit" value="Accedi">
+            <p>Non hai ancora un account? <a href="registrati/index.html">Registrati</a></p>
+        </form>
+    </body>
+</html>

@@ -1,21 +1,25 @@
 <html>
-    <head>
+<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
         <title>ShopWise</title>
+        <style>
+        .account{
+            margin-right: 26px;
+            }
+        </style>
     </head>
     <body>
         <div class="header">
-            <a href="#top" class="logo"><img src="images/ShopWise-logo-header.png"></a>
+            <a href="#top" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
             <div class="header-right">
-                <a href="login.html" class="accedi">Accedi</a>
-                <a href="registrati/index.html" class="registrati">Registrati</a>
+                <a href="account.php" class="account">Account</a>
             </div>
         </div>
-        <img class="logo-homepage" src="images/ShopWise logo.png">
+        <img class="logo-homepage" src="../images/ShopWise logo.png">
             <form onsubmit="event.preventDefault();" role="search">
                 <label for="search">Cerca</label>
                 <input id="search" type="search" placeholder="Cerca un prodotto..." autofocus required />
