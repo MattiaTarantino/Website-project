@@ -31,7 +31,6 @@ require_once('config.php');
     if (isset($_POST['submit-search'])) {
         $search = mysqli_real_escape_string($connessione, $_POST['search-field']);
     }
-    
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_select = "SELECT * FROM prodotti WHERE categoria = '$search' OR nome LIKE '%$search%'";
         $result = mysqli_query($connessione, $sql_select);
