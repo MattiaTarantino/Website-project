@@ -151,7 +151,7 @@ if(isset($_SESSION['email_alert'])){
         <div class="header">
             <a href="../index.html" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
             <div class="header-right">
-                <a href="login.php" >Accedi</a>
+                <a href="login_venditore.php" >Accedi</a>
             </div>
         </div>
         <div class="form-body">
@@ -160,9 +160,9 @@ if(isset($_SESSION['email_alert'])){
                     <div class="form-content">
                         <div class="form-items">
                             <h3>Registrati a ShopWise!</h3>
-                            <p>Se sei un venditore <a href="register_venditore.php">clicca qui</a></p>
+                            <p>Se non sei un venditore <a href="register.php">clicca qui</a></p>
                             <p><?php echo $message; ?></p>
-                            <form action="check_registration.php" method="POST" name="form_registrazione" id="idform" class="form-registrazione">
+                            <form action="check_registration_venditore.php" method="POST" name="form_registrazione" id="idform" class="form-registrazione">
     
                                 <div class="col-md-12">
                                    <input class="form-control" type="text" name="nome" placeholder="Nome" required>
@@ -183,6 +183,9 @@ if(isset($_SESSION['email_alert'])){
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="indirizzo" placeholder="Indirizzo" required>
                                 </div>
+                                <div class="col-md-12">
+                                    <input id="venditore" type="text" name="venditore" placeholder="Venditore" autofocus required />
+                                </div>   
                                 <div class="form-button mt-3">
                                     <button id="submit" type="submit" class="btn btn-primary">Registrati</button>
                                 </div>
