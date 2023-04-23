@@ -28,15 +28,17 @@ body {
   overflow: hidden;
   background-color: var(--secondary-color);
 }
-.header-center{
-  margin-top: 12px;
-}
+
 .header a {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   float: left;
   padding: 12px;
+}
+
+.header-center{
+  margin-top: 12px;
 }
 
 .header-right {
@@ -71,7 +73,7 @@ body {
   color: white;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
   .header a {
     float: none;
     display: block;
@@ -190,4 +192,36 @@ label {
   color: #777;
   height: 20rem;
   margin: 0.5rem;
+}
+
+
+@media screen and (max-width: 1600px) {
+  form {
+    max-width: 20rem;
+  }
+
+  .header-center{
+    margin-top: 17px;
+  }
+
+  input, button {
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  form {
+    max-width: 15rem;
+  }
+
+  .header-center{
+    margin-top: 20px;
+  }
+
+  input, button {
+    height: 30px;
+    font-size: 1rem;
+  }
 }
