@@ -14,10 +14,10 @@ require_once('config.php');
 </head>
 <body>
     <div class="header">
-        <a href="#top" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+        <a href="../index.html" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         <div class="header-right">
-            <a href="../html/login.html" class="accedi">Accedi</a>
-            <a href="../html/registrazione.html" class="registrati">Registrati</a>
+            <a href="login.php" class="accedi">Accedi</a>
+            <a href="register.php" class="registrati">Registrati</a>
         </div>
         <div class="header-center">
             <form action="?" method="post" role="search" id="idform3">
