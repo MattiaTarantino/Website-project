@@ -50,9 +50,8 @@ body {
   transition: background-color 1s, color 1s !important;
 }
 
-.btn-primary:hover{
+
   background-color: #176791 !important;
   color: white !important;
 }
-
 

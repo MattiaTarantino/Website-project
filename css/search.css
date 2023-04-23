@@ -8,31 +8,25 @@
   --color-light: #f1f1f1;
   --color-brand: #EB6A02;
   --font-fam: 'Lato', sans-serif;
-  --height: 5rem;
-  --btn-width: 6rem;
+  --height: 3rem;
+  --btn-width: 4rem;
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
-}
 
-@keyframes animatedBackground {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 0;
-  }
+  --secondary-color: #176791;
+  --box-shadow: 0 .5rem 1rem rgba(0,0,0.1);
+  --black: #444;
+  --border: .2rem solid var(--black);
 }
 
 body { 
   margin: 0;
-  background: linear-gradient(rgb(196, 196, 237), rgba(255, 255, 0, 0.5)),
-                    url("../images/sfondo.jpeg") repeat-x;
+  background: orange;
   background-size: cover ;
-  animation: animatedBackground 700s infinite linear;
 }
 
 .header {
   overflow: hidden;
-  background-color: #176791;
+  background-color: var(--secondary-color);
 }
 
 .header a {
@@ -50,6 +44,9 @@ body {
 .header-right a {
   background-color: white;
   color: #EB6A02;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-right: 26px;
   width: 130px;
   height: 27px;
@@ -71,14 +68,16 @@ body {
   color: white;
 }
 
-
-.logo-homepage{
-  display: block;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width:70%;
-  height: auto;
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+    
+  .header-right {
+    float: none;
+  }
 }
 
 form {
@@ -88,6 +87,7 @@ form {
   border-radius: var(--rad);
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0.4%;
 }
 
 input, button {
@@ -141,67 +141,50 @@ label {
   overflow: hidden;
 }
 
-
-/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
-@media screen and (min-width: 801px) {
-  .spiegazione {
-    flex: 2 0 300px;
-    margin-top: 75px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1200px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #176691;
-
-
-    text-align: center;
-    font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 2rem;
-    color: #EB6A02;
-  }
+.show-products .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 23rem);
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-@media screen and (max-width: 800px) {
-  .header-right a {
-    text-align: center;
-    font-size: 13px;
-    width: 55px;
-    height: 13px;
-    margin-right: 10px;
-    margin-top: 20px;
-    padding: 10px;
-  }
+.show-products .box-container .box{   
+  background-color: white;
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  border: var(--border);
+  padding: 1.5rem;
+}     
 
-  .logo-homepage{
-    display: block;
-    width: 1000px ;
-  }
+.show-products .box-container .box img{
+  width: 100%;
+  height: 20rem;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
 
-  form {
-    max-width: 20rem;
-  }
+.show-products .box-container .box .name{
+  font-size: 2rem;
+  color: var(--black);
+}
 
-  input, button {
-    height: 40px;
-    font-size: 1rem;
-  }
+.show-products .box-container .box .price{
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin: 0.5rem;
+}
 
-  .spiegazione{
-    flex: 300px;
-    margin-top: 75px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 320px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #176691;
+.show-products .box-container .box .shop{
+  font-size: 1.5rem;
+  color: black;
+  margin: 0.5rem;
+}
 
-
-    text-align: center;
-    font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 20px;
-    color: #EB6A02;
-  }
-
+.show-products .box-container .box .details{
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: #777;
+  height: 20rem;
+  margin: 0.5rem;
 }

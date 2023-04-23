@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/registrazione.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+        <title>ShopWise - Registrazione</title>
+        <script type="text/javascript" language="javascript">
+            function inizializzaCodice() {
+                window.document.form_registrazione.codice.style.visibility = "hidden"
+            }
+            function aggiungiCampo() {
+                window.document.form_registrazione.codice.style.visibility = "visible"
+            }
+            function controlloPassword() {
+                while (document.form_registrazione.password.value != document.form_registrazione.repassword.value) {
+                        alert("Le password non corrispondono, reinserire la password");
+                        return false;
+                }
+            }
+            function controllo_negoziante() {
+                while (document.form_registrazione.password.value != document.form_registrazione.repassword.value) {
+                        alert("Le password non corrispondono, reinserire la password");
+                        return false;
+                }
+                if (document.form_registrazione.codice.value=="") {
+                    alert("Congratulazioni! Hai creato un account utente!");
+                    return true;
+                }
+                else {
+                    alert("Congratulazioni! Hai creato un account Aziendale!");
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <body onload="inizializzaCodice();">
+        <div class="header">
+            <a href="../index.html" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+        </div>
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">                                                                       <!--Setup per lavorare con grid di bootstrap; h-100 = altezza 100%-->
+                <div class="row d-flex justify-content-center align-items-center h-100">                        <!--Creazione della riga: d-flex per controllare layout, allineamento e spazi; justify-content-center per giustificare i campi al centro (orizzontale); align-items-center per mettere gli elementi al centro dell'altezza della riga (verticale), h-100 = altezza 100%-->
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-9">                                             <!--Comportamento della finestra a differenti grandezze di schermo (breakpoints di bootstrap); x-small, medium, large, extra large - [numero di elementi per colonna a quel breakpoint]-->
+                        <h1 class="text-center p-5 mb-5">Registrati a ShopWise!</h1>                            <!--p = padding su tutti i lati; mb = margin bottom-->
+                        <div class="card" style="border-radius: 15px; background-color:lightgrey">
+                            <div class="card-header">
+                                <div class="nav nav-tabs nav-justified">
+                                    <button class="nav-link button" name="bottoneUtente" value="Utente" onclick="return inizializzaCodice();">Utente</button>
+                                    <button class="nav-link button" name="bottoneUtente" value="Azienda" onclick="return aggiungiCampo();">Azienda</button>
+                                </div>
+                            </div>
+                            <div class="card-body p-5">                                                         <!--card-body è il posizionamento di ciò che vi è all'interno dell'elemento card-->
+                                <form action="../php/register.php" method="post" name="form_registrazione" id="idform" class="form-registr" onsubmit="return controllo_negoziante();">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" id="nome" name="nome" placeholder="Nome:" required autofocus>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" id="cognome" name="cognome" placeholder="Cognome:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="email" class="form-control form-control-lg" name="email" placeholder="Email:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" class="form-control form-control-lg" name="password" placeholder="Inserisci una password:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="password" class="form-control form-control-lg" name="repassword" placeholder="Reinserisci la password:" required onchange="return controlloPassword();">
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control form-control-lg" name="indirizzo" placeholder="Indirizzo:" required>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="number" class="form-control form-control-lg" name="codice" placeholder="Codice Aziendale:">
+                                    </div>
+                                    <p>Hai già un account? <a href="../login.html">Accedi</a></p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row mx-auto col-2 my-5">         <!--row?-->                                  <!--m(margine)[coordinata spaziale]-[numero] = aggiunge uno spazio grande quanto il numero specificato dopo il - nella coordinata specificata; mx-auto = rimane sempre centrale (x = destra e sinistra); col-2 = uso numero di colonne per determinare la grandezza del bottone-->
+                            <input type="submit" class="btn btn-primary btn-lg" form="idform" value="Registrati"></button>             <!--SISTEMARE SCRITTA PER LA RESPONSIVENESS-->                   <!--btn-primary = setta il colore primario di bootstrap sul bottone (sfondo e bordo azzurro con scritta bianca); btn-lg = botton large-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
