@@ -11,26 +11,31 @@ require_once('config.php');
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
     <title>RicercaProdotti</title>
+    <style>
+        .account{
+            margin-right: 26px;
+            }
+    </style>
 </head>
 <body>
     <div class="header">
-        <a href="../index.html" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+        <a href="logged.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         <div class="header-right">
-            <a href="login.php" class="accedi">Accedi</a>
-            <a href="register.php" class="registrati">Registrati</a>
+            <a href="aggiorna_account.php" class="account">Account</a>
         </div>
         <div class="header-center">
-            <form action="?" method="post" role="search" id="idform3">
+            <form action="?" method="post" role="search" id="idform4">
                 <label for="search">Cerca</label>
-                <input id="search" type="search" placeholder="Cerca un prodotto..." name="search-field" autofocus required />
-                <button class="vai" type="submit" form="idform3" name="submit-search">Vai</button>    
+                <input id="search" type="search" placeholder="Cerca un prodotto..." name="search-field-logged" autofocus required />
+                <button class="vai" type="submit" form="idform4" name="submit-search-logged">Vai</button>    
             </form>        
         </div>
     </div>
     <?php
-    if (isset($_POST['submit-search'])) {
-        $search = mysqli_real_escape_string($connessione, $_POST['search-field']);
+    if (isset($_POST['submit-search-logged'])) {
+        $search = mysqli_real_escape_string($connessione, $_POST['search-field-logged']);
     }
+    
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_select = "SELECT * FROM prodotti WHERE categoria = '$search' OR nome LIKE '%$search%'";
         $result = mysqli_query($connessione, $sql_select);
