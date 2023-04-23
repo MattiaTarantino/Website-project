@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+$message='';
+if(isset($_SESSION['password_alert'])){
+    $message='La password non è corretta';
+}
+if(isset($_SESSION['email_alert'])){
+    $message="L'indirizzo email non è corretto";
+}
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,13 +22,13 @@
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap");
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-    
+
             body {
                 font-family: "Poppins", sans-serif;
                 background-color: #e98635;
                 overflow: hidden;
             }
-            
+
             .form-holder {
                 display: flex;
                 flex-direction: column;
@@ -25,7 +37,7 @@
                 text-align: center;
                 min-height: 100vh;
             }
-    
+
             .form-holder .form-content {
                 position: relative;
                 text-align: center;
@@ -41,7 +53,7 @@
                 padding: 60px;
                 margin-bottom: 100px;
             }
-    
+
             .form-content .form-items {
                 border: 3px solid #fff;
                 padding: 40px;
@@ -55,7 +67,7 @@
                 -webkit-transition: all 0.4s ease;
                 transition: all 0.4s ease;
             }
-    
+
             .form-content h3 {
                 color: #fff;
                 text-align: left;
@@ -63,11 +75,11 @@
                 font-weight: 600;
                 margin-bottom: 5px;
             }
-    
+
             .form-content h3.form-title {
                 margin-bottom: 30px;
             }
-    
+
             .form-content p {
                 color: #fff;
                 text-align: left;
@@ -76,7 +88,7 @@
                 line-height: 20px;
                 margin-bottom: 30px;
             }
-    
+
             .form-content input[type="text"],
             .form-content input[type="password"],
             .form-content input[type="email"],
@@ -95,14 +107,14 @@
                 transition: all 0.3s ease;
                 margin-top: 16px;
             }
-    
+
             .btn-primary {
                 color: #176791;
                 outline: none;
                 border: 0px;
                 box-shadow: none;
             }
-    
+
             .btn-primary:hover,
             .btn-primary:focus,
             .btn-primary:active {
@@ -110,7 +122,7 @@
                 border: none ;
                 box-shadow: none;
             }
-    
+
             .form-content textarea {
                 position: static !important;
                 width: 100%;
@@ -129,15 +141,15 @@
                 transition: none;
                 margin-bottom: 14px;
             }
-    
+
             .form-content textarea:hover,
             .form-content textarea:focus {
                 border: 0;
                 background-color: #ebeff8;
                 color: #8d8d8d;
             }
-            
-            </style>
+
+        </style>
     </head>
     <body>
         <div class="header">
@@ -153,6 +165,7 @@
                         <div class="form-items">
                             <h3>Accedi a ShopWise!</h3>
                             <p>Se sei un venditore <a href="login_venditore.php">clicca qui</a></p>
+                            <p><?php echo $message; ?></p>
                             <form action="check_login.php" method ="POST" role="login">
                                 <div class="col-md-12">
                                     <input id="email" type="email" name="email" placeholder="Indirizzo e-mail" autofocus required />
@@ -170,5 +183,7 @@
                 </div>
             </div>
         </div>
+        <?php unset($_SESSION['email_alert']); ?>
+        <?php unset($_SESSION['password_alert']); ?>
     </body>
 </html>

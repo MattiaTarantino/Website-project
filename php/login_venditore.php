@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+$message='';
+if(isset($_SESSION['password_alert'])){
+    $message='La password non è corretta';
+}
+if(isset($_SESSION['email_alert'])){
+    $message="L'indirizzo email non è corretto";
+}
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -143,7 +154,7 @@
         <div class="header">
             <a href="../index.html" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
             <div class="header-right">
-                <a href="php/register.php" >Registrati</a>
+                <a href="register_venditore.php" >Registrati</a>
             </div>
         </div>
         <div class="form-body">
@@ -153,7 +164,8 @@
                         <div class="form-items">
                             <h3>Accedi a ShopWise!</h3>
                             <p>Se non sei un venditore <a href="login.php">clicca qui</a></p>
-                            <form action="check_login.php" method ="POST" role="login">
+                            <p><?php echo $message; ?></p>
+                            <form action="check_login_venditore.php" method ="POST" role="login">
                                 <div class="col-md-12">
                                     <input id="email" type="email" name="email" placeholder="Indirizzo e-mail" autofocus required />
                                 </div>
@@ -162,7 +174,7 @@
                                     <input id="password" type="password" name="password" placeholder="Password" autofocus required />
                                 </div>       
                                 <div class="col-md-12">
-                                    <input id="codice" type="text" name="codice" placeholder="Codice aziendale" autofocus required />
+                                    <input id="venditore" type="text" name="codice" placeholder="Venditore" autofocus required />
                                 </div>             
                                 <div class="form-button mt-3">
                                     <button id="submit" type="submit" class="btn btn-primary">Accedi</button>
@@ -174,4 +186,6 @@
             </div>
         </div>
     </body>
+    <?php unset($_SESSION['email_alert']); ?>
+    <?php unset($_SESSION['password_alert']); ?>
 </html>

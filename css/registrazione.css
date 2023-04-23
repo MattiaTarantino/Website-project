@@ -1,22 +1,7 @@
-
-:root {
-  --rad: .7rem;
-  --dur: .3s;
-  --color-dark: #2f2f2f;
-  --color-light: #f1f1f1;
-  --color-brand: #EB6A02;
-  --font-fam: 'Lato', sans-serif;
-  --height: 5rem;
-  --btn-width: 6rem;
-  --bez: cubic-bezier(0, 0, 0.43, 1.49);
-
-}
-
-
-body { 
+body {
   margin: 0;
 }
-  
+
 .header {
   overflow: hidden;
   background-color: #176791;
@@ -28,15 +13,6 @@ body {
   margin-left: 10px;
   float: left;
   padding: 12px;
-}
-
-.header-right {
-  float: right;
-}
-
-.header-right a:hover{
-  background-color: #EB6A02;
-  color: white;
 }
 
 .header-right {
@@ -68,14 +44,6 @@ body {
   color: white;
 }
 
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-  
 .btn-primary {
   background-color: white !important;
   color: #176791 !important;
@@ -86,3 +54,5 @@ body {
   background-color: #176791 !important;
   color: white !important;
 }
+
+
