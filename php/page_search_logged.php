@@ -19,7 +19,7 @@ require_once('config.php');
 </head>
 <body>
     <div class="header">
-        <a href="../index.html" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+        <a href="logged.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         <div class="header-right">
             <a href="aggiorna_account.php" class="account">Account</a>
         </div>
