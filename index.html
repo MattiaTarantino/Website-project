@@ -9,17 +9,17 @@
     </head>
     <body>
         <div class="header">
-            <a href="#top" class="logo"><img src="images/ShopWise-logo-header.png"></a>
+            <a href="#top" class="logo"><img src="./images/ShopWise-logo-header.png"></a>
             <div class="header-right">
                 <a href="php/login.php" class="accedi">Accedi</a>
                 <a href="php/register.php" class="registrati">Registrati</a>
             </div>
         </div>
-        <img class="logo-homepage" src="images/ShopWise logo.png">
-            <form onsubmit="event.preventDefault();" role="search">
+        <img class="logo-homepage" src="./images/ShopWise logo.png">
+            <form action="./php/page_search.php" method="post" role="search" id="idform1">
                 <label for="search">Cerca</label>
-                <input id="search" type="search" placeholder="Cerca un prodotto..." autofocus required />
-                <button class="vai" type="submit">Vai</button>    
+                <input id="search" type="search" placeholder="Cerca un prodotto..." name="search-field" autofocus required />
+                <button class="vai" type="submit" form="idform1" name="submit-search">Vai</button>    
             </form>
         <div class="spiegazione">
                 Cerca il prodotto di tuo interesse e ShopWise ti aiuterà a trovare l'offerta migliore per te!

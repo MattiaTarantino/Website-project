@@ -116,7 +116,7 @@ if(isset($_POST['update_profile'])){
             </div>
         </div>
         <input type="submit" value="Aggiorna account" name="update_profile" class="btn">
-        <a href="logged.php" class="btn">Torna indietro</a>
+        <a onclick="history.back();" class="btn">Torna indietro</a>
         <a href="logout.php" class="delete-btn">Logout</a>
     </form>
 </div>
