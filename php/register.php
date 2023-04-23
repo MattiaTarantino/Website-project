@@ -17,7 +17,7 @@ $sql = "INSERT INTO utenti(nome, cognome, email, password, indirizzo) VALUES ('$
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
         <title>ShopWise</title>
         <style>
         .account{
@@ -33,7 +33,7 @@ $sql = "INSERT INTO utenti(nome, cognome, email, password, indirizzo) VALUES ('$
             </div>
         </div>
         <img class="logo-homepage" src="../images/ShopWise logo.png">
-            <form onsubmit="event.preventDefault();" role="search">
+            <form action="search.php" method="post" role="search">
                 <label for="search">Cerca</label>
                 <input id="search" type="search" placeholder="Cerca un prodotto..." autofocus required />
                 <button class="vai" type="submit">Vai</button>    
