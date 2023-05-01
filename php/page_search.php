@@ -80,9 +80,9 @@ require_once('config.php');
                     url: 'filtered.php',
                     method: 'POST',
                     data: {action:action, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:'<?php echo $prezzo_minimo; ?>', prezzo_massimo:'<?php echo $prezzo_massimo; ?>'},
-                    success:function(response) {
-                        $('#ajaxResults').html(response);
-                        $('#filteredResults').text($(response).find('#filteredResultsDynamic').text());
+                    success:function(data) {
+                        $('#ajaxResults').html(data);
+                        $('#filteredResults').text($(data).find('#filteredResultsDynamic').text());
                     }
                 });
 
@@ -315,7 +315,7 @@ require_once('config.php');
                         <div class="price"> <?php echo $row['prezzo']; ?> </div>
                         <div class="shop">Venditore: <?php echo $row['venditore']; ?> </div>
                         <div class="details">
-                            <h4 class="<?php echo "testo" . $row['id_prodotto']; ?>">Specifiche tecniche:</h4>
+                            <h4 class="<?php echo "testo" . $row['id_prodotto']; ?>">Specifiche tecniche: <span id="<?php echo "more". $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_more</span><span id="<?php echo "less" . $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_less </span></h4>
                             <div class="hideDetails" id="<?php echo $row['id_prodotto']; ?>">
                                 <div>Marca: <?php echo $row['marca']; ?> </div>
                                 <?php 
@@ -341,8 +341,20 @@ require_once('config.php');
                             </div>
                         </div>
                         <script type="text/javascript">
+                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                            mostra = false;
                             $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
                                 $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
+                                if (mostra == false){
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                                    mostra = true;
+                                }
+                                else{
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                                    mostra = false;
+                                }
                             });
                         </script>
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>

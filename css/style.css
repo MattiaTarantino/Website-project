@@ -27,7 +27,7 @@ body {
   background: linear-gradient(rgb(196, 196, 237), rgba(255, 255, 0, 0.5)),
                     url("../images/sfondo.jpeg") repeat-x;
   background-size: cover ;
-  animation: animatedBackground 700s infinite linear;
+  animation: animatedBackground 1000s infinite linear;
 }
 
 .header {

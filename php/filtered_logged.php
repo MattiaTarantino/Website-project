@@ -72,7 +72,7 @@ require_once('config.php');
                     <div class="price"> <?php echo $row['prezzo']; ?> </div>
                     <div class="shop">Venditore: <?php echo $row['venditore']; ?> </div>
                     <div class="details">
-                        <h4 class="<?php echo "testo" . $row['id_prodotto'] ?>">Specifiche tecniche:</h4>
+                        <h4 class="<?php echo "testo" . $row['id_prodotto'] ?>">Specifiche tecniche: <span id="<?php echo "more". $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_more</span><span id="<?php echo "less" . $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_less </span></h4>
                         <div class="hideDetails" id="<?php echo $row['id_prodotto']; ?>">
                             <div>Marca: <?php echo $row['marca']; ?> </div>
                             <?php 
@@ -98,8 +98,20 @@ require_once('config.php');
                         </div>
                     </div>
                     <script type="text/javascript">
+                        $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                        mostra = false;
                         $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
                             $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
+                            if (mostra == false){
+                                $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                                mostra = true;
+                            }
+                            else{
+                                $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                                mostra = false;
+                            }
                         });
                     </script>
                     <?php

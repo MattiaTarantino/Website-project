@@ -4,61 +4,66 @@ require_once('config.php');
 session_start();
 $id_utente = $_SESSION['id_utente'];
 
-$select = mysqli_query($connessione, "SELECT * FROM `utenti` WHERE id_utente = '$id_utente'") or die('query failed');
-if(mysqli_num_rows($select) > 0) {
-    $old = mysqli_fetch_assoc($select);
+if (isset($connessione)) {
+    $select = mysqli_query($connessione, "SELECT * FROM `utenti` WHERE id_utente = '$id_utente'") or die('query failed');
 
-    $old_name = $old['nome'];
-    $old_cognome = $old['cognome'];
-    $old_email = $old['email'];
-    $old_indirizzo = $old['indirizzo'];
-    $crypted_old_password = $old['password'];
-}
+    if (mysqli_num_rows($select) > 0) {
+        $old = mysqli_fetch_assoc($select);
 
-if(isset($_POST['update_profile'])){
-
-    $update_name = mysqli_real_escape_string($connessione, $_POST['update_name']);
-    $update_cognome = mysqli_real_escape_string($connessione, $_POST['update_cognome']);
-    $update_email = mysqli_real_escape_string($connessione, $_POST['update_email']);
-    $update_indirizzo= mysqli_real_escape_string($connessione, $_POST['update_indirizzo']);
-
-    $res = mysqli_query($connessione,"SELECT * FROM utenti WHERE email='$update_email'");
-    if (mysqli_num_rows($res) == 0) {
-        mysqli_query($connessione, "UPDATE `utenti` SET nome = '$update_name', cognome = '$update_cognome', email = '$update_email', indirizzo ='$update_indirizzo'  WHERE id_utente = '$id_utente'") or die('query failed');
-    }
-    else if ($old_email != $update_email ){
-        $message_bad[] = 'email già esistente!';
-    }
-    if($update_name != $old_name){
-        $message_good[] = 'Nome aggiornato con successo!';
-    }
-    if($update_cognome != $old_cognome){
-        $message_good[] = 'Cognome aggiornato con successo!';
-    }
-    if($update_email!= $old_email && mysqli_num_rows($res) == 0){
-        $message_good[] = 'Email aggiornato con successo!';
-    }
-    if($update_indirizzo!= $old_indirizzo){
-        $message_good[] = 'Indirizzo aggiornato con successo!';
+        $old_name = $old['nome'];
+        $old_cognome = $old['cognome'];
+        $old_email = $old['email'];
+        $old_indirizzo = $old['indirizzo'];
+        $crypted_old_password = $old['password'];
     }
 
-    $check_pass = mysqli_real_escape_string($connessione, $_POST['check_pass']);
-    $new_pass = mysqli_real_escape_string($connessione, $_POST['new_pass']);
-    $confirm_pass = mysqli_real_escape_string($connessione, $_POST['confirm_pass']);
+    if (isset($_POST['update_profile'])) {
 
-    if(!empty($check_pass) || !empty($new_pass) || !empty($confirm_pass)){
-        if(!password_verify($check_pass, $crypted_old_password)){
-            $message_bad[] = 'Vecchia password errata!';
-        }elseif($new_pass != $confirm_pass){
-            $message_bad[] = 'Conferma della password errata!';
-        }else{
-            $hashed_password= password_hash($confirm_pass, PASSWORD_DEFAULT);
-            mysqli_query($connessione, "UPDATE `utenti` SET password = '$hashed_password' WHERE id_utente = '$id_utente'") or die('query failed');
-            $message_good[] = 'Password aggiornata con successo!';
+        $update_name = mysqli_real_escape_string($connessione, $_POST['update_name']);
+        $update_cognome = mysqli_real_escape_string($connessione, $_POST['update_cognome']);
+        $update_email = mysqli_real_escape_string($connessione, $_POST['update_email']);
+        $update_indirizzo = mysqli_real_escape_string($connessione, $_POST['update_indirizzo']);
+
+        $res = mysqli_query($connessione, "SELECT * FROM utenti WHERE id_utente='$id_utente'");
+        if (mysqli_num_rows($res) == 1) {
+            mysqli_query($connessione, "UPDATE `utenti` SET nome = '$update_name', cognome = '$update_cognome', indirizzo ='$update_indirizzo' WHERE id_utente = '$id_utente'") or die('query failed');
+            if ($update_name != $old_name) {
+                $message_good[] = 'Nome aggiornato con successo!';
+            }
+            if ($update_cognome != $old_cognome) {
+                $message_good[] = 'Cognome aggiornato con successo!';
+            }
+            if ($update_indirizzo != $old_indirizzo) {
+                $message_good[] = 'Indirizzo aggiornato con successo!';
+            }
+            $check_email = mysqli_query($connessione, "SELECT * FROM utenti WHERE email='$update_email'");
+            if (mysqli_num_rows($check_email) == 0) {
+                mysqli_query($connessione, "UPDATE `utenti` SET email='$update_email' WHERE id_utente = '$id_utente'") or die('query failed');
+
+                $message_good[] = 'Email aggiornato con successo!';
+            } else if ($old_email != $update_email) {
+                $message_bad[] = 'email già esistente!';
+            }
+        }
+
+
+        $check_pass = mysqli_real_escape_string($connessione, $_POST['check_pass']);
+        $new_pass = mysqli_real_escape_string($connessione, $_POST['new_pass']);
+        $confirm_pass = mysqli_real_escape_string($connessione, $_POST['confirm_pass']);
+
+        if (!empty($check_pass) || !empty($new_pass) || !empty($confirm_pass)) {
+            if (!password_verify($check_pass, $crypted_old_password)) {
+                $message_bad[] = 'Vecchia password errata!';
+            } elseif ($new_pass != $confirm_pass) {
+                $message_bad[] = 'Conferma della password errata!';
+            } else {
+                $hashed_password = password_hash($confirm_pass, PASSWORD_DEFAULT);
+                mysqli_query($connessione, "UPDATE `utenti` SET password = '$hashed_password' WHERE id_utente = '$id_utente'") or die('query failed');
+                $message_good[] = 'Password aggiornata con successo!';
+            }
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
