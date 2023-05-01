@@ -332,6 +332,8 @@ require_once('config.php');
                             </div>
                         </div>
                         <script type="text/javascript">
+                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                            mostra = false;
                             $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
                                 $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
                                 if (mostra == false){
