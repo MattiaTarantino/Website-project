@@ -2,9 +2,10 @@
 session_start();
 require_once('config.php');
 
-$email = $connessione->real_escape_string($_POST['email']);
-$password = $connessione->real_escape_string($_POST['password']);
-
+if (isset($connessione)) {
+    $email = $connessione->real_escape_string($_POST['email']);
+    $password = $connessione->real_escape_string($_POST['password']);
+}
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     $sql_select = "SELECT * FROM utenti where email = '$email'";
     if ($result = $connessione->query($sql_select)){

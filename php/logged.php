@@ -8,7 +8,8 @@ session_start();
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/style.css">
-        <title>ShopWise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <title>ShopWise</title>
         <style>
         .account{
             margin-right: 26px;
@@ -25,7 +26,7 @@ session_start();
         <img class="logo-homepage" src="../images/ShopWise logo.png">
             <form action="page_search_logged.php" method="post" role="search" id="idform2">
                 <label for="search">Cerca</label>
-                <input id="search" type="search" placeholder="Cerca un prodotto..." name="search-field-logged" autofocus required />
+                <input id="search" type="search" placeholder="&#xF002; Cerca un prodotto..." name="search-field-logged" style="font-family:Arial, FontAwesome"  required />
                 <button class="vai" type="submit" form="idform2" name="submit-search-logged">Vai</button>    
             </form>
         <div class="spiegazione">
