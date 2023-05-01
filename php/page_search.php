@@ -80,9 +80,9 @@ require_once('config.php');
                     url: 'filtered.php',
                     method: 'POST',
                     data: {action:action, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:'<?php echo $prezzo_minimo; ?>', prezzo_massimo:'<?php echo $prezzo_massimo; ?>'},
-                    success:function(response) {
-                        $('#ajaxResults').html(response);
-                        $('#filteredResults').text($(response).find('#filteredResultsDynamic').text());
+                    success:function(data) {
+                        $('#ajaxResults').html(data);
+                        $('#filteredResults').text($(data).find('#filteredResultsDynamic').text());
                     }
                 });
 
