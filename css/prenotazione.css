@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+:root{
+   --blue:#3498db;
+   --dark-blue:#2980b9;
+   --red:#e74c3c;
+   --dark-red:#c0392b;
+   --green:#198754;
+   --black:#333;
+   --white:#fff;
+   --light-bg:#eee;
+   --box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border: none;
+   text-decoration: none;
+}
+
+body{
+   background-color: #e98635;
+}
+
+.header {
+   overflow: hidden;
+   background-color: #176791;
+}
+
+.header a {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-left: 10px;
+   float: left;
+   padding: 12px;
+}
+
+.header-right {
+   float: right;
+}
+
+.header-right a {
+   background-color: white;
+   color: #EB6A02;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-right: 26px;
+   width: 154px;
+   height: 51px;
+   border: none;
+   border-radius: 5px;
+
+   text-align: center;
+   text-decoration: none;
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 24px;
+   line-height: normal;
+
+   transition: background-color 1s, color 1s;
+}
+
+.header-right a:hover{
+   background-color: #EB6A02;
+   color: white;
+}
+
+.btn{
+   width: 100%;
+   border-radius: 5px;
+   padding:10px 30px;
+   color:var(--white);
+   display: block;
+   text-align: center;
+   cursor: pointer;
+   font-size: 20px;
+   margin-top: 10px;
+   background-color: var(--blue);
+}
+
+.btn:hover{
+   background-color: var(--dark-blue);
+}
+
+.item-reservation{
+   background-color: #e98635;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 100px;
+   padding:20px;
+}
+
+.item-reservation form{
+   padding:20px;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   width: 700px;
+   text-align: center;
+   border-radius: 5px;
+}
+
+.item-reservation form .flex{
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 20px;
+   gap:15px;
+}
+
+.item-reservation form .flex .inputBox{
+   width: 49%;
+}
+
+.item-reservation form .flex .inputBox span{
+   text-align: left;
+   display: block;
+   margin-top: 15px;
+   font-size: 17px;
+   color:var(--black);
+}
+
+.item-reservation form .flex .inputBox .box{
+   width: 100%;
+   border-radius: 5px;
+   background-color: var(--light-bg);
+   padding:12px 14px;
+   font-size: 17px;
+   color:var(--black);
+   margin-top: 10px;
+}
+
+
+@media (max-width:650px){
+   .item-reservation form .flex{
+      flex-wrap: wrap;
+      gap:0;
+   }
+   .item-reservation form .flex .inputBox{
+      width: 100%;
+   }
+}
