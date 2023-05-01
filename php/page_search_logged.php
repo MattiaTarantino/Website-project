@@ -42,6 +42,8 @@ require_once('config.php');
         $result = mysqli_query($connessione, $sql_select);
         $numberQueryResults = mysqli_num_rows($result);
     }
+    $prezzo_minimo = 0;
+    $prezzo_massimo = 3000;
     ?>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -104,8 +106,8 @@ require_once('config.php');
                         $("#slideFiltri").slideToggle();
                     });
                 </script>
-                <input type="text" name="prezzoMinimo" id="prezzo_minimo" class="form_control" value="<?php echo $prezzo_minimo; ?>" >
                 <div id="price_range"></div>
+                <input type="text" name="prezzoMinimo" id="prezzo_minimo" class="form_control" value="<?php echo $prezzo_minimo; ?>" >
                 <input type="text" name="prezzoMassimo" id="prezzo_massimo" class="form_control" value="<?php echo $prezzo_massimo; ?>">
                 <?php
                 if ($numberQueryResults > 0) {
@@ -304,7 +306,7 @@ require_once('config.php');
                         <div class="price"><?php echo $row['prezzo']; ?> </div>
                         <div class="shop">Venditore: <?php echo $row['venditore']; ?> </div>
                         <div class="details">
-                            <h4 class="<?php echo "testo" . $row['id_prodotto']; ?>">Specifiche tecniche:</h4>
+                            <h4 class="<?php echo "testo" . $row['id_prodotto']; ?>">Specifiche tecniche: <span id="<?php echo "more". $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_more</span><span id="<?php echo "less" . $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_less </span></h4>
                             <div class="hideDetails" id="<?php echo $row['id_prodotto']; ?>">
                                 <div>Marca: <?php echo $row['marca']; ?> </div>
                                 <?php 
@@ -332,6 +334,16 @@ require_once('config.php');
                         <script type="text/javascript">
                             $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
                                 $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
+                                if (mostra == false){
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                                    mostra = true;
+                                }
+                                else{
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                                    mostra = false;
+                                }
                             });
                         </script>
                         <?php 
