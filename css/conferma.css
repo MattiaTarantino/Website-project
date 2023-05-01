@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+:root{
+   --blue:#3498db;
+   --dark-blue:#2980b9;
+   --red:#e74c3c;
+   --dark-red:#c0392b;
+   --green:#198754;
+   --black:#333;
+   --white:#fff;
+   --light-bg:#eee;
+   --box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border: none;
+   text-decoration: none;
+}
+
+body{
+   background-color: #e98635;
+}
+
+.header {
+   overflow: hidden;
+   background-color: #176791;
+}
+
+.header a {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-left: 10px;
+   float: left;
+   padding: 12px;
+}
+
+.header-right {
+   float: right;
+}
+
+.header-right a {
+   background-color: white;
+   color: #EB6A02;
+   margin-right: 26px;
+   width: 154px;
+   height: 51px;
+   border: none;
+   border-radius: 5px;
+
+   text-align: center;
+   text-decoration: none;
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 24px;
+   line-height: normal;
+
+   transition: background-color 1s, color 1s;
+}
+
+.header-right a:hover{
+   background-color: #EB6A02;
+   color: white;
+}
+
+.btn{
+   width: 100%;
+   border-radius: 5px;
+   padding:10px 30px;
+   color:var(--white);
+   display: block;
+   text-align: center;
+   cursor: pointer;
+   font-size: 20px;
+   margin-top: 10px;
+}
+
+.btn{
+   background-color: var(--blue);
+}
+
+.btn:hover{
+   background-color: var(--dark-blue);
+}
+
+.container{
+   align-items: center;
+   justify-content: center;
+   margin-top: 100px;
+   padding:20px;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   text-align: center;
+   width: 700px;
+   border-radius: 5px;
+}
+
+.container .text-center img{
+    width: 75px;
+    height: 75px;
+}

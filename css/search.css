@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 :root {
   --rad: .7rem;
@@ -9,13 +10,18 @@
   --color-brand: #EB6A02;
   --font-fam: 'Lato', sans-serif;
   --height: 3rem;
-  --btn-width: 4rem;
+  --bottone-width: 4rem;
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
 
   --secondary-color: #176791;
   --box-shadow: 0 .5rem 1rem rgba(0,0,0.1);
   --black: #444;
   --border: .2rem solid var(--black);
+
+  --blue:#3498db;
+  --dark-blue:#2980b9;
+  --red:#e74c3c;
+  --dark-red:#c0392b;
 }
 
 body { 
@@ -85,7 +91,7 @@ body {
   }
 }
 
-form {
+.ricerca {
   position: relative;
   max-width: 50rem;
   background: var(--color-brand);
@@ -95,7 +101,7 @@ form {
   margin-top: 0.4%;
 }
 
-input, button {
+.search-field, .vai {
   height: var(--height);
   font-family: var(--font-fam);
   border: 0;
@@ -103,7 +109,7 @@ input, button {
   font-size: 1.8rem;
 }
 
-input[type="search"] {
+.search-field[type="search"] {
   outline: 0;
   width: 100%;
   background: var(--color-light);
@@ -121,22 +127,22 @@ input[type="search"] {
   position: absolute;
   top: 0;
   right: 0;
-  width: var(--btn-width);
+  width: var(--bottone-width);
   font-weight: bold;
   background: var(--color-brand);
   border-radius: 0 var(--rad) var(--rad) 0;
 }
 
-input:not(:placeholder-shown) {
+.search-field:not(:placeholder-shown) {
   border-radius: var(--rad) 0 0 var(--rad);
-  width: calc(100% - var(--btn-width));
+  width: calc(100% - var(--bottone-width));
 }
   
-input:not(:placeholder-shown) + button{
+.search-field:not(:placeholder-shown) + .vai{
   display: block;
 }
 
-label {
+ .label-search {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
   padding: 0;
@@ -144,11 +150,11 @@ label {
   height: 1px;
   width: 1px;
   overflow: hidden;
-}
+} 
 
 .show-products .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, 23rem);
+  grid-template-columns: repeat(auto-fit, 22rem);
   gap: 1.5rem;
   justify-content: center;
   align-items: flex-start;
@@ -164,39 +170,69 @@ label {
 
 .show-products .box-container .box img{
   width: 100%;
-  height: 20rem;
+  height: 18rem; 
   object-fit: contain;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .show-products .box-container .box .name{
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--black);
 }
 
 .show-products .box-container .box .price{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--secondary-color);
   margin: 0.5rem;
 }
 
 .show-products .box-container .box .shop{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: black;
   margin: 0.5rem;
 }
 
 .show-products .box-container .box .details{
   line-height: 1.5;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #777;
-  height: 20rem;
   margin: 0.5rem;
+}
+
+.bottone, .delete-bottone{
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   padding:10px 30px;
+   color: white;
+   display: block;
+   text-align: center;
+   cursor: pointer;
+   font-size: 20px;
+   margin-top: 10px;
+   text-decoration: none;
+  
+}
+
+.bottone{
+   background-color: var(--blue);
+}
+
+.bottone:hover{
+   background-color: var(--dark-blue);
+}
+
+.delete-bottone{
+   background-color: var(--red);
+}
+
+.delete-bottone:hover{
+   background-color: var(--dark-red);
 }
 
 
 @media screen and (max-width: 1600px) {
-  form {
+  .ricerca {
     max-width: 20rem;
   }
 
@@ -204,15 +240,15 @@ label {
     margin-top: 17px;
   }
 
-  input, button {
+   .search-field, .vai {
     height: 40px;
     font-size: 1rem;
-  }
+  } 
 }
 
 
 @media screen and (max-width: 1000px) {
-  form {
+  .ricerca {
     max-width: 15rem;
   }
 
@@ -220,8 +256,26 @@ label {
     margin-top: 20px;
   }
 
-  input, button {
+   .search-field, .vai {
     height: 30px;
     font-size: 1rem;
+  } 
+}
+
+
+@media screen and (min-width: 1200px) {
+  .bottoneFiltri {
+    display: none;
+  }
+
+  #slideFiltri {
+    display: block !important;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  #slideFiltri {
+    display: none;
   }
 }

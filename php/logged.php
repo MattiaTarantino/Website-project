@@ -24,7 +24,7 @@ session_start();
             </div>
         </div>
         <img class="logo-homepage" src="../images/ShopWise logo.png">
-            <form action="page_search_logged.php" method="post" role="search" id="idform2">
+            <form action="page_search_logged.php" method="get" role="search" id="idform2">
                 <label for="search">Cerca</label>
                 <input id="search" type="search" placeholder="&#xF002; Cerca un prodotto..." name="search-field-logged" style="font-family:Arial, FontAwesome"  required />
                 <button class="vai" type="submit" form="idform2" name="submit-search-logged">Vai</button>    
