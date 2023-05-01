@@ -20,8 +20,8 @@ $venditore = $_SESSION['venditore'];
 <div class="header">
     <a href="pagina_venditore.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
     <div class="header-right">
+        <a href="pagina_venditore.php" class="registrati">Aggiungi</a>
         <a href="aggiorna_account_venditore.php" class="account">Account</a>
-        <a href="pagina_venditore.php" class="registrati">Indietro</a>
     </div>
     <div class="header-center">
         <form action="?" method="post" role="search" id="idform3">
