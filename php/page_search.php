@@ -38,7 +38,7 @@ require_once('config.php');
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_select = "SELECT * FROM prodotti WHERE categoria = '$search' OR nome LIKE '$search%'";
         $result = mysqli_query($connessione, $sql_select);
-        $numberQueryResults = mysqli_num_rows($result);
+        $numberQueryLabelResults = mysqli_num_rows($result);
     }
     $prezzo_minimo = 0;
     $prezzo_massimo = 3000;
@@ -82,7 +82,6 @@ require_once('config.php');
                     data: {action:action, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:'<?php echo $prezzo_minimo; ?>', prezzo_massimo:'<?php echo $prezzo_massimo; ?>'},
                     success:function(data) {
                         $('#ajaxResults').html(data);
-                        $('#filteredResults').text($(data).find('#filteredResultsDynamic').text());
                     }
                 });
 
@@ -90,37 +89,28 @@ require_once('config.php');
 
         });
     </script>
-    <div class="py-2 my-3 text-center" id="filteredResults">
-        <div class="py-2 my-3 text-start bottoneFiltri">
-            <button type="button" class="btn btn-dark text-start">Filtri</button>
-        </div>
-        <?php
-        if ($numberQueryResults > 0) {
-            echo "<h2>Abbiamo trovato ".$numberQueryResults." risultati</h2>";
-        }
-        else {
-        ?>
-    </div>
-    <div class="py-2 my-3 text-center">     
-        <?php
-            echo "<h2>Non ci sono prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>";
-        }  
-        ?>  
+    <div class="py-2 my-3 text-start bottoneFiltri">
+        <button type="button" class="btn btn-dark text-start">Filtri</button>
     </div>
     <div class="show-products container-fluid">
         <div class="row">
             <div class="col-xl-3" id="slideFiltri">
+                <div class="row py-xl-4 my-xl-5"></div>
                 <script type="text/javascript">
                     $(".bottoneFiltri").click(function() {
                         $("#slideFiltri").slideToggle();
                     });
                 </script>
+                <?php
+                if ($numberQueryLabelResults > 0) {
+                ?>
                 <div id="price_range"></div>
+                <br>
                 <input type="text" name="prezzoMinimo" id="prezzo_minimo" class="form_control" value="<?php echo $prezzo_minimo; ?>" >
                 <input type="text" name="prezzoMassimo" id="prezzo_massimo" class="form_control" value="<?php echo $prezzo_massimo; ?>">
+                <hr>
+                <h6>Scegli la marca</h6>
                 <?php
-                if ($numberQueryResults > 0) {
-                    echo "<h6>Scegli la marca</h6>";
                 }
                 ?>
                 <ul class="list-group">
@@ -304,8 +294,22 @@ require_once('config.php');
                 }
                 ?>
             </div>
-            <div class="col-xl-9">
-                <div class="box-container" id="ajaxResults">
+            <div class="col-xl-9" id="ajaxResults">
+            <div class="py-2 my-3 text-center">
+                    <?php
+                    if ($numberQueryLabelResults > 0) {
+                        echo "<h2>Abbiamo trovato ".$numberQueryLabelResults." risultati</h2>";
+                    }
+                    else {
+                    ?>
+                </div>
+                <div class="py-2 my-3 text-center">     
+                    <?php
+                        echo "<h2>Non ci sono prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>";
+                    }  
+                    ?>
+                </div>
+                <div class="box-container">
                     <?php
                     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                     ?>

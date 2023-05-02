@@ -55,17 +55,23 @@ require_once('config.php');
         }
         $result = mysqli_query($connessione, $sql_select);
         $numberQueryResults = mysqli_num_rows($result);
-        if ($numberQueryResults > 0) {
-            echo '<div id="filteredResultsDynamic">
-                <h2>Abbiamo trovato '.$numberQueryResults.' risultati</h2>
-                </div>';
-        }
-        else {   
-            echo '<div id="filteredResultsDynamic">     
-                <h2>Non abbiamo trovato nessun prodotto con queste caratteristiche!</h2>
-                </div>';
-        }
-        if ($numberQueryResults > 0) {
+        ?>
+        <div class="py-2 my-3 text-center">
+            <?php
+            if ($numberQueryResults > 0) {
+                echo "<h2>Abbiamo trovato ".$numberQueryResults." risultati</h2>";
+            }
+            else {
+            ?>
+        </div>
+        <div class="py-2 my-3 text-center">     
+            <?php
+                echo "<h2>Non ci sono prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>";
+            }  
+            ?>
+        </div>
+        <div class="box-container">
+                <?php
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                 ?>
                 <div class="box">
@@ -120,7 +126,9 @@ require_once('config.php');
                 </div>
             <?php
             }
-        }
+            ?>
+        </div>
+        <?php
     }
     ?>
 </body>
