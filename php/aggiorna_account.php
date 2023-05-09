@@ -18,7 +18,6 @@ if (isset($connessione)) {
     }
 
     if (isset($_POST['update_profile'])) {
-
         $update_name = mysqli_real_escape_string($connessione, $_POST['update_name']);
         $update_cognome = mysqli_real_escape_string($connessione, $_POST['update_cognome']);
         $update_email = mysqli_real_escape_string($connessione, $_POST['update_email']);

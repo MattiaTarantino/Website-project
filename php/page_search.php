@@ -105,7 +105,6 @@ require_once('config.php');
     <div class="show-products container-fluid">
         <div class="row">
             <div class="col-xl-3" id="slideFiltri">
-                <div class="row py-xl-4 my-xl-5"></div>
                 <script type="text/javascript">
                     $(".bottoneFiltri").click(function() {
                         $("#slideFiltri").slideToggle();
@@ -119,12 +118,12 @@ require_once('config.php');
                     <div id="price_range"></div>
                     <div class="d-flex justify-content-between">
                         <div class="prezzo">
-                            <label for="prezzo_minimo">€: </label>
                             <input type="text" name="prezzoMinimo" id="prezzo_minimo" class="pointer" value="<?php echo $prezzo_minimo; ?>" readonly> 
+                            <label for="prezzo_minimo">€</label>
                         </div>
                         <div class="prezzo">
-                            <label for="prezzo_massimo">€: </label>
                             <input type="text" name="prezzoMassimo" id="prezzo_massimo" class="pointer" value="<?php echo $prezzo_massimo; ?>" readonly>
+                            <label for="prezzo_massimo">€</label>
                         </div>
                     </div>
                     <hr>
@@ -336,7 +335,7 @@ require_once('config.php');
                         <div class="box">
                             <img <?php echo "src='data:immagine/jpeg;base64,".base64_encode($row['immagine'])."';" ?> />
                             <div class="name"> <?php echo $row['nome']; ?> </div>
-                            <div class="price"> <?php echo $row['prezzo']; ?> </div>
+                            <div class="price"><h2> <?php echo $row['prezzo']; ?> </h2></div>
                             <div class="shop">Venditore: <?php echo $row['venditore']; ?> </div>
                             <div class="details">
                                 <h4 class="<?php echo "testo" . $row['id_prodotto']; ?>"><div class="specifiche">Specifiche tecniche: </div><span id="<?php echo "more". $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_more</span><span id="<?php echo "less" . $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_less </span></h4>
@@ -382,7 +381,7 @@ require_once('config.php');
                                 });
                             </script>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
-                        </div>
+                    </div>
                     <?php
                     }
                     ?>
