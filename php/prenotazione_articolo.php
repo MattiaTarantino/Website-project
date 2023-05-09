@@ -57,7 +57,7 @@ foreach ($_POST as $index => $var) {
                 </div>
             </div>
             <input type="submit" value="Prenota" name="reservation-button" class="btn">
-            <a onclick="window.history.back();" class="btn">Torna a sfoglia</a>               
+            <a href="page_search_logged.php" class="btn" name="go-back-button">Torna a sfoglia</a>
         </form>
     </div>
 </body>
