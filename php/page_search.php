@@ -105,7 +105,6 @@ require_once('config.php');
     <div class="show-products container-fluid">
         <div class="row">
             <div class="col-xl-3" id="slideFiltri">
-                <div class="row py-xl-4 my-xl-5"></div>
                 <script type="text/javascript">
                     $(".bottoneFiltri").click(function() {
                         $("#slideFiltri").slideToggle();
@@ -119,12 +118,12 @@ require_once('config.php');
                     <div id="price_range"></div>
                     <div class="d-flex justify-content-between">
                         <div class="prezzo">
-                            <label for="prezzo_minimo">€: </label>
                             <input type="text" name="prezzoMinimo" id="prezzo_minimo" class="pointer" value="<?php echo $prezzo_minimo; ?>" readonly> 
+                            <label for="prezzo_minimo">€</label>
                         </div>
                         <div class="prezzo">
-                            <label for="prezzo_massimo">€: </label>
                             <input type="text" name="prezzoMassimo" id="prezzo_massimo" class="pointer" value="<?php echo $prezzo_massimo; ?>" readonly>
+                            <label for="prezzo_massimo">€</label>
                         </div>
                     </div>
                     <hr>
