@@ -342,7 +342,7 @@ require_once('config.php');
                         <div class="box">
                             <img <?php echo "src='data:immagine/jpeg;base64,".base64_encode($row['immagine'])."';" ?> />
                             <div class="name"> <?php echo $row['nome']; ?> </div>
-                            <div class="price"> <?php echo $row['prezzo']; ?> </div>
+                            <div class="price"><h2> <?php echo $row['prezzo']; ?> </h2></div>
                             <div class="shop">Venditore: <?php echo $row['venditore']; ?> </div>
                             <div class="details">
                                 <h4 class="<?php echo "testo" . $row['id_prodotto']; ?>"><div class="specifiche">Specifiche tecniche: </div><span id="<?php echo "more". $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_more</span><span id="<?php echo "less" . $row['id_prodotto']; ?>" class="material-symbols-outlined" >expand_less </span></h4>
