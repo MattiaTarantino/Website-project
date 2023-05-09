@@ -24,7 +24,7 @@ require_once('config.php');
         $search = $_POST['search'];
         $prezzo_minimo = $_POST['prezzo_minimo'];
         $prezzo_massimo = $_POST['prezzo_massimo'];
-        $sql_select = "SELECT * FROM prodotti WHERE categoria = '$search'";                
+        $sql_select = "SELECT * FROM prodotti WHERE categoria = '$search' AND CAST(REPLACE(prezzo, ' €', '') AS UNSIGNED) BETWEEN '$prezzo_minimo' AND '$prezzo_massimo'";                
         if (isset($_POST['marca'])) {
             $marca = implode("','", $_POST['marca']);
             $sql_select .= "AND marca IN ('" . $marca . "')";
@@ -58,7 +58,10 @@ require_once('config.php');
         ?>
         <div class="py-2 my-3 text-center">
             <?php
-            if ($numberQueryResults > 0) {
+            if ($numberQueryResults == 1) {
+                echo "<h2>Abbiamo trovato ".$numberQueryResults." risultato</h2>";
+            }
+            else if ($numberQueryResults > 1) {
                 echo "<h2>Abbiamo trovato ".$numberQueryResults." risultati</h2>";
             }
             else {
@@ -66,14 +69,14 @@ require_once('config.php');
         </div>
         <div class="py-2 my-3 text-center">     
             <?php
-                echo "<h2>Non ci sono prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>";
+                echo "<h2>Non ci sono prodotti con queste caratteristiche!<br>Prova a cercare un altro prodotto</h2>";
             }  
             ?>
         </div>
         <div class="box-container">
-                <?php
+            <?php
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                ?>
+            ?>
                 <div class="box">
                     <img <?php echo "src='data:immagine/jpeg;base64,".base64_encode($row['immagine'])."';" ?> />
                     <div class="name"> <?php echo $row['nome']; ?> </div>
