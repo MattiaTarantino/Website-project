@@ -13,7 +13,7 @@ if (isset($_SESSION['formato']))
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,6 +60,7 @@ if (isset($_SESSION['formato']))
                     <option value="smartwatch"> Smartwatch </option>
                     <option value="tablet"> Tablet </option>
                     <option value="telefono"> Telefono</option>
+                    <option value="televisore"> Televisore</option>
                 </select>
                 <span>Prezzo :</span>
                 <input type="text" name="prezzo_prodotto" class="box" required>

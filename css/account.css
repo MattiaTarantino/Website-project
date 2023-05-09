@@ -46,7 +46,7 @@ body{
    background-color: white;
    color: #EB6A02;
    margin-right: 26px;
-   width: 154px;
+   width: 150px;
    height: 51px;
    border: none;
    border-radius: 5px;
@@ -268,5 +268,16 @@ body{
    }
    .update-profile form .flex .inputBox{
       width: 100%;
+   }
+
+   .header-right a {
+      height: auto;
+      width: auto;
+   }
+}
+
+@media (max-width:450px) {
+   .header-right a {
+
    }
 }

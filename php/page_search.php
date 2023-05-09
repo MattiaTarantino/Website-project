@@ -383,6 +383,25 @@ require_once('config.php');
                             </script>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
                         </div>
+                        <script type="text/javascript">
+                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                            mostra = false;
+                            $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
+                                $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
+                                if (mostra == false){
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                                    mostra = true;
+                                }
+                                else{
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                                    mostra = false;
+                                }
+                            });
+                        </script>
+                        <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
+                    </div>
                     <?php
                     }
                     ?>
