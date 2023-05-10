@@ -60,12 +60,12 @@ $id_utente = $_SESSION['id_utente'];
                 $numberQueryResults = mysqli_num_rows($result);
                 if ($numberQueryResults == 1) {
                     echo "<div class='py-2 my-3 text-center'> 
-                            <h2>Abbiamo trovato ".$numberQueryResults." risultato </h2>
+                            <h2>Abbiamo trovato ".$numberQueryResults." prenotazione </h2>
                         </div>";
                 }
                 else if ($numberQueryResults > 1) {
                     echo "<div class='py-2 my-3 text-center'> 
-                            <h2>Abbiamo trovato ".$numberQueryResults." risultati </h2>
+                            <h2>Abbiamo trovato ".$numberQueryResults." prenotazioni </h2>
                         </div>";
                 }
                 else {
@@ -86,12 +86,12 @@ $id_utente = $_SESSION['id_utente'];
         $numberQueryResults = mysqli_num_rows($result);
         if ($numberQueryResults == 1) {
             echo "<div class='py-2 my-3 text-center'> 
-                    <h2>Abbiamo trovato ".$numberQueryResults." risultato </h2>
+                    <h2>Abbiamo trovato ".$numberQueryResults." prenotazione </h2>
                 </div>";
         }
         else if ($numberQueryResults > 1) {
             echo "<div class='py-2 my-3 text-center'> 
-                    <h2>Abbiamo trovato ".$numberQueryResults." risultati </h2>
+                    <h2>Abbiamo trovato ".$numberQueryResults." prenotazioni </h2>
                 </div>";
         }
         else {
