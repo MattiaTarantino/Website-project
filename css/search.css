@@ -74,6 +74,10 @@ body {
   transition: background-color 1s, color 1s;
 }
 
+.header-right a#prenotazioni {
+  width: 180px;
+}
+
 .header-right a:hover{
   background-color: #EB6A02;
   color: white;
