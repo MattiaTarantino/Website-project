@@ -150,7 +150,7 @@ require_once('config.php');
                         ?>
                     </ul>
                     <?php
-                    $sql_query = "SELECT DISTINCT schermo FROM prodotti WHERE schermo IS NOT NULL AND categoria = '$search' OR nome LIKE '$search%' ORDER BY schermo";
+                    $sql_query = "SELECT DISTINCT schermo FROM prodotti WHERE schermo IS NOT NULL AND schermo != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY schermo";
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -177,7 +177,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT ram FROM prodotti WHERE ram IS NOT NULL AND categoria = '$search' OR nome LIKE '$search%' ORDER BY LENGTH(ram), ram";
+                    $sql_query = "SELECT DISTINCT ram FROM prodotti WHERE ram IS NOT NULL AND ram != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY LENGTH(ram), ram";
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -204,7 +204,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT spazio FROM prodotti WHERE spazio IS NOT NULL AND categoria = '$search' OR nome LIKE '$search%' ORDER BY LENGTH(spazio), spazio";
+                    $sql_query = "SELECT DISTINCT spazio FROM prodotti WHERE spazio IS NOT NULL AND spazio != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY LENGTH(spazio), spazio";
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -231,7 +231,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT cpu FROM prodotti WHERE cpu IS NOT NULL AND categoria = '$search' OR nome LIKE '$search%' ORDER BY cpu";          
+                    $sql_query = "SELECT DISTINCT cpu FROM prodotti WHERE cpu IS NOT NULL AND cpu != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY cpu";          
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -258,7 +258,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT gpu FROM prodotti WHERE gpu IS NOT NULL AND categoria = '$search' OR nome LIKE '$search%' ORDER BY gpu";          
+                    $sql_query = "SELECT DISTINCT gpu FROM prodotti WHERE gpu IS NOT NULL AND gpu != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY gpu";          
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -285,7 +285,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT batteria FROM prodotti WHERE batteria IS NOT NULL AND categoria = '$search' OR nome LIKE '$search%' ORDER BY batteria";          
+                    $sql_query = "SELECT DISTINCT batteria FROM prodotti WHERE batteria IS NOT NULL AND batteria != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY batteria";          
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -342,22 +342,22 @@ require_once('config.php');
                                 <div class="hideDetails" id="<?php echo $row['id_prodotto']; ?>">
                                     <div>Marca: <?php echo $row['marca']; ?> </div>
                                     <?php 
-                                    if (!is_null($row['schermo'])) {
+                                    if (!is_null($row['schermo']) && $row['schermo'] != '') {
                                         echo "Schermo: ". $row['schermo'] ."<br>";
                                     }
-                                    if (!is_null($row['ram'])) {
+                                    if (!is_null($row['ram']) && $row['ram'] != '') {
                                         echo "Ram: ". $row['ram'] ."<br>";
                                     }
-                                    if (!is_null($row['spazio'])) {
+                                    if (!is_null($row['spazio']) && $row['spazio'] != '') {
                                         echo "Spazio: ". $row['spazio'] ."<br>";
                                     }
-                                    if (!is_null($row['cpu'])) {
+                                    if (!is_null($row['cpu']) && $row['cpu'] != '') {
                                         echo "CPU: ". $row['cpu'] ."<br>";
                                     }
-                                    if (!is_null($row['gpu'])) {
+                                    if (!is_null($row['gpu']) && $row['gpu'] != '') {
                                         echo "GPU: ". $row['gpu'] ."<br>";
                                     }
-                                    if (!is_null($row['batteria'])) {
+                                    if (!is_null($row['batteria']) && $row['batteria'] != '') {
                                         echo "Batteria: ". $row['batteria'];
                                     }
                                     ?>

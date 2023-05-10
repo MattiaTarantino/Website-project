@@ -34,7 +34,7 @@ $result = mysqli_query($connessione, $sql_insert);
             <div class="text-center">
                 <h3>Prenotazione Effettuata!</h3>
                 <p>Grazie per aver effettuato la tua prenotazione su ShopwWise!</p>
-                <a href="#" class="btn">I tuoi ordini</a>
+                <a href="prodotti_utente.php" class="btn">Le tue prenotazioni</a>
             </div>
         </div>
     </div>

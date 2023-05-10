@@ -87,24 +87,24 @@ require_once('config.php');
                         <div class="hideDetails" id="<?php echo $row['id_prodotto']; ?>">
                             <div>Marca: <?php echo $row['marca']; ?> </div>
                             <?php 
-                            if(!is_null($row['schermo'])) {
+                            if (!is_null($row['schermo']) && $row['schermo'] != '') {
                                 echo "Schermo: ". $row['schermo'] ."<br>";
-                            }                        
-                            if (!is_null($row['ram'])) {
+                            }
+                            if (!is_null($row['ram']) && $row['ram'] != '') {
                                 echo "Ram: ". $row['ram'] ."<br>";
-                            }                        
-                            if (!is_null($row['spazio'])) {
+                            }
+                            if (!is_null($row['spazio']) && $row['spazio'] != '') {
                                 echo "Spazio: ". $row['spazio'] ."<br>";
                             }
-                            if (!is_null($row['cpu'])) {
+                            if (!is_null($row['cpu']) && $row['cpu'] != '') {
                                 echo "CPU: ". $row['cpu'] ."<br>";
                             }
-                            if (!is_null($row['gpu'])) {
+                            if (!is_null($row['gpu']) && $row['gpu'] != '') {
                                 echo "GPU: ". $row['gpu'] ."<br>";
                             }
-                            if (!is_null($row['batteria'])) {
+                            if (!is_null($row['batteria']) && $row['batteria'] != '') {
                                 echo "Batteria: ". $row['batteria'];
-                            } 
+                            }
                             ?>
                         </div>
                     </div>
