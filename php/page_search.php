@@ -380,7 +380,7 @@ require_once('config.php');
                                     }
                                 });
                             </script>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
+                            <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
                     </div>
                     <?php
                     }

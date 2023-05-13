@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="007b0f0e-5c7b-493e-843e-e4a10198e441" name="Changes" comment="modifica">
+      <change afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/aggiungi_admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/aggiunta_prodotto_admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/modifica_prodotto_admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/registrazione.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/registrazione.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/login_venditore.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login_venditore.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/page_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/page_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/register_venditore.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/register_venditore.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PEzRXfGuULd7u3FlyogoSaaTKh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/shopwise",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="007b0f0e-5c7b-493e-843e-e4a10198e441" name="Changes" comment="" />
+      <created>1683037029373</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683037029373</updated>
+      <workItem from="1683037030465" duration="31000" />
+      <workItem from="1683128125287" duration="10103000" />
+      <workItem from="1683144118590" duration="5555000" />
+      <workItem from="1683208646381" duration="11172000" />
+      <workItem from="1683652761037" duration="1260000" />
+      <workItem from="1683802042928" duration="6327000" />
+      <workItem from="1683815052317" duration="391000" />
+      <workItem from="1683979914989" duration="11142000" />
+    </task>
+    <task id="LOCAL-00001" summary="modifica">
+      <created>1683652819062</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683652819063</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/branch2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="modifica" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifica" />
+  </component>
+</project>
