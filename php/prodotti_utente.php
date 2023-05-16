@@ -12,7 +12,7 @@ $id_utente = $_SESSION['id_utente'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
-    <title>ProdottiUtente</title>
+    <title>ShopWise-ProdottiUtente</title>
     <script type="text/javascript" src="../jquery/jquery-3.6.4.js"> </script>
     <script type="text/javascript">
          $(document).ready(function() {
@@ -37,13 +37,13 @@ $id_utente = $_SESSION['id_utente'];
     <div class="header">
         <a href="logged.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         <div class="header-right">
-            <a href="#" class="btn" id="prenotazioni">Prenotazioni</a>
+            <a href="#" class="btn" id="prenotazioni">Tutte le prenotazioni</a>
             <a href="aggiorna_account.php" class="account">Account</a>
         </div>
         <div class="header-center">
             <form action="?" method="get" class="ricerca" role="search" id="idform4">                   
                 <label class="label-search" for="search">Cerca</label>
-                <input class="search-field" id="search" type="search" placeholder="Cerca un prodotto tra le prenotazioni..." name="search-field-logged" autofocus required />
+                <input class="search-field" id="search" type="search" placeholder="Cerca tra le prenotazioni per negozio o per categoria..." name="search-field-logged" autofocus required />
                 <button class="vai" type="submit" form="idform4" name="submit-search-logged">Vai</button>    
             </form>        
         </div>
@@ -55,22 +55,22 @@ $id_utente = $_SESSION['id_utente'];
                 $search = mysqli_real_escape_string($connessione, $_GET['search-field-logged']);
             }
             if($_SERVER["REQUEST_METHOD"] == "GET") { 
-                $sql_select = "SELECT * FROM prenotazioni, prodotti WHERE prenotazioni.id_utente = '$id_utente' AND prenotazioni.id_prodotto = prodotti.id_prodotto AND (prodotti.categoria = '$search' OR prodotti.nome LIKE '$search%')";
+                $sql_select = "SELECT * FROM prenotazioni, prodotti WHERE prenotazioni.id_utente = '$id_utente' AND prenotazioni.id_prodotto = prodotti.id_prodotto AND (prodotti.categoria = '$search' OR prodotti.venditore = '$search')";
                 $result = mysqli_query($connessione, $sql_select);
                 $numberQueryResults = mysqli_num_rows($result);
                 if ($numberQueryResults == 1) {
                     echo "<div class='py-2 my-3 text-center'> 
-                            <h2>Abbiamo trovato ".$numberQueryResults." prenotazione </h2>
+                            <h2>Abbiamo trovato ".$numberQueryResults." prenotazione</h2>
                         </div>";
                 }
                 else if ($numberQueryResults > 1) {
                     echo "<div class='py-2 my-3 text-center'> 
-                            <h2>Abbiamo trovato ".$numberQueryResults." prenotazioni </h2>
+                            <h2>Abbiamo trovato ".$numberQueryResults." prenotazioni</h2>
                         </div>";
                 }
                 else {
                     echo "<div class='py-2 my-3 text-center'>
-                            <h2>Non hai effettuato la prenotazione di prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>
+                            <h2>Non hai effettuato la prenotazione di prodotti da questo venditore o di questa tipologia!<br>Prova a cercare un altro prodotto</h2>
                         </div>";
                 }
             }
@@ -86,12 +86,12 @@ $id_utente = $_SESSION['id_utente'];
         $numberQueryResults = mysqli_num_rows($result);
         if ($numberQueryResults == 1) {
             echo "<div class='py-2 my-3 text-center'> 
-                    <h2>Abbiamo trovato ".$numberQueryResults." prenotazione </h2>
+                    <h2>Abbiamo trovato ".$numberQueryResults." prenotazione</h2>
                 </div>";
         }
         else if ($numberQueryResults > 1) {
             echo "<div class='py-2 my-3 text-center'> 
-                    <h2>Abbiamo trovato ".$numberQueryResults." prenotazioni </h2>
+                    <h2>Abbiamo trovato ".$numberQueryResults." prenotazioni</h2>
                 </div>";
         }
         else {

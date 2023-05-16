@@ -12,7 +12,7 @@ $venditore = $_SESSION['venditore'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
-    <title>Shopwise - I tuoi prodotti</title>
+    <title>ShopWise-ProdottiVenditore</title>
     <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>

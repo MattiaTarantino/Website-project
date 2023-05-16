@@ -11,7 +11,7 @@ require_once('config.php');
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
     <link rel="stylesheet" href="../jquery-ui-1.13.2/jquery-ui.css">
-    <title>RicercaProdotti</title>
+    <title>ShopWise-RicercaProdotti</title>
     <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
     <script type="text/javascript" src="../jquery/jquery-3.6.4.js"> </script>
     <script type="text/javascript" src="../jquery-ui-1.13.2/jquery-ui.js"> </script>
@@ -99,9 +99,24 @@ require_once('config.php');
 
         });
     </script>
-    <div class="container py-2 my-3">
-        <button type="button" class="btn btn-dark bottoneFiltri">Filtri</button>
-    </div>
+    <?php
+    if ($numberQueryLabelResults == 0) {
+    ?>
+        <div class="py-2 my-3 text-center">     
+            <?php
+            echo "<h2>Non ci sono prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>"; 
+            ?>
+        </div>
+    <?php
+    }
+    else {
+    ?>
+        <div class="container py-2 my-3">
+            <button type="button" class="btn btn-dark bottoneFiltri">Filtri</button>
+        </div>
+    <?php
+    }
+    ?>
     <div class="show-products container-fluid">
         <div class="row">
             <div class="col-xl-3" id="slideFiltri">
@@ -133,7 +148,7 @@ require_once('config.php');
                     ?>
                     <ul class="list-group border-white">
                         <?php
-                        $sql_query = "SELECT DISTINCT marca FROM prodotti WHERE categoria = '$search' OR nome LIKE '$search%' ORDER BY marca";
+                        $sql_query = "SELECT DISTINCT marca FROM prodotti WHERE (categoria = '$search' OR nome LIKE '$search%') ORDER BY marca";
                         $filter = mysqli_query($connessione, $sql_query);
                         while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
                         ?>
@@ -150,7 +165,7 @@ require_once('config.php');
                         ?>
                     </ul>
                     <?php
-                    $sql_query = "SELECT DISTINCT schermo FROM prodotti WHERE schermo IS NOT NULL AND schermo != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY schermo";
+                    $sql_query = "SELECT DISTINCT schermo FROM prodotti WHERE schermo IS NOT NULL AND schermo != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY schermo";
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -177,7 +192,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT ram FROM prodotti WHERE ram IS NOT NULL AND ram != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY LENGTH(ram), ram";
+                    $sql_query = "SELECT DISTINCT ram FROM prodotti WHERE ram IS NOT NULL AND ram != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY LENGTH(ram), ram";
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -204,7 +219,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT spazio FROM prodotti WHERE spazio IS NOT NULL AND spazio != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY LENGTH(spazio), spazio";
+                    $sql_query = "SELECT DISTINCT spazio FROM prodotti WHERE spazio IS NOT NULL AND spazio != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY LENGTH(spazio), spazio";
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -231,7 +246,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT cpu FROM prodotti WHERE cpu IS NOT NULL AND cpu != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY cpu";          
+                    $sql_query = "SELECT DISTINCT cpu FROM prodotti WHERE cpu IS NOT NULL AND cpu != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY cpu";          
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -258,7 +273,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT gpu FROM prodotti WHERE gpu IS NOT NULL AND gpu != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY gpu";          
+                    $sql_query = "SELECT DISTINCT gpu FROM prodotti WHERE gpu IS NOT NULL AND gpu != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY gpu";          
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -285,7 +300,7 @@ require_once('config.php');
                     }
                     ?>
                     <?php
-                    $sql_query = "SELECT DISTINCT batteria FROM prodotti WHERE batteria IS NOT NULL AND batteria != '' AND categoria = '$search' OR nome LIKE '$search%' ORDER BY batteria";          
+                    $sql_query = "SELECT DISTINCT batteria FROM prodotti WHERE batteria IS NOT NULL AND batteria != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY batteria";          
                     $filter = mysqli_query($connessione, $sql_query);
                     $numberQueryResults = mysqli_num_rows($filter);
                     if ($numberQueryResults > 0) {
@@ -319,13 +334,6 @@ require_once('config.php');
                     if ($numberQueryLabelResults > 0) {
                         echo "<h2>Abbiamo trovato ".$numberQueryLabelResults." risultati</h2>";
                     }
-                    else {
-                    ?>
-                </div>
-                <div class="py-2 my-3 text-center">     
-                    <?php
-                        echo "<h2>Non ci sono prodotti di questa tipologia o corrispondenti con questo nome!<br>Prova a cercare un altro prodotto</h2>";
-                    }  
                     ?>
                 </div>
                 <div class="box-container">
@@ -365,22 +373,20 @@ require_once('config.php');
                             </div>
                             <script type="text/javascript">
                                 $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
-                                mostra = false;
                                 $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
-                                    $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
-                                    if (mostra == false){
-                                        $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
-                                        $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
-                                        mostra = true;
-                                    }
-                                    else{
-                                        $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
-                                        $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
-                                        mostra = false;
-                                    }
+                                    $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle(function() {
+                                        if ($(this).is(':visible')) {
+                                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                            $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                                        }
+                                        else {
+                                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                            $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                                        }
+                                    });
                                 });
                             </script>
-                            <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
+                            <button type="button" class="btn btn-lg bottone-piccolo btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
                     </div>
                     <?php
                     }

@@ -19,7 +19,7 @@ if(isset($_SESSION['email_alert'])){
     <link rel="stylesheet" href="../css/registrazione.css">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
-    <title>ShopWise</title>
+    <title>ShopWise-LoginVenditore</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@500&display=swap');
