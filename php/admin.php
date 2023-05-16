@@ -1,7 +1,6 @@
 <?php
 require_once('config.php');
 session_start();
-$venditore = $_SESSION['venditore'];
 ?>
 
 <!DOCTYPE html>
@@ -12,16 +11,15 @@ $venditore = $_SESSION['venditore'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
-    <title>ShopWise-ProdottiVenditore</title>
+    <title>Shopwise - ITuoiProdotti</title>
     <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="header">
-    <a href="pagina_venditore.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+    <a href="admin.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
     <div class="header-right">
-        <a href="pagina_venditore.php" class="registrati">Aggiungi</a>
-        <a href="aggiorna_account_venditore.php" class="account">Account</a>
+        <a href="aggiungi_admin.php" class="registrati">Aggiungi</a>
     </div>
     <div class="header-center">
         <form action="?" class="ricerca" method="post" role="search" id="idform3">
@@ -42,7 +40,7 @@ if (isset($_POST['submit-search'])) {
         $search = mysqli_real_escape_string($connessione, $_POST['search-field']);
     }
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sql_select = "SELECT * FROM prodotti WHERE (categoria = '$search' OR nome LIKE '%$search%') AND venditore = '$venditore' ";
+        $sql_select = "SELECT * FROM prodotti WHERE (categoria = '$search' OR nome LIKE '%$search%')";
         $result = mysqli_query($connessione, $sql_select);
         $numberQueryResults = mysqli_num_rows($result);
         if ($numberQueryResults > 0) {
@@ -56,7 +54,7 @@ if (isset($_POST['submit-search'])) {
     }
 }
 else {
-    $sql_select = "SELECT * FROM prodotti WHERE venditore = '$venditore' ";
+    $sql_select = "SELECT * FROM prodotti";
     if (isset($connessione)) {
         $result = mysqli_query($connessione, $sql_select);
     }
@@ -123,27 +121,27 @@ else {
                         }
                     });
                 </script>
-                <a href="modifica_prodotto.php?id=<?php echo $row['id_prodotto']?>" class="btn btn-primary btn-lg">Modifica</a>
+                <a href="modifica_prodotto_admin.php?id=<?php echo $row['id_prodotto']?>" class="btn btn-primary btn-lg">Modifica</a>
                 <button data-nome="<?php echo $row['nome']; ?>" data-id="<?php echo $row['id_prodotto']; ?>" class="rimuovi btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#confirmDelete">Rimuovi</button>
             </div>
             <?php
         }
         ?>
         <div class="modal modal-lg fade" id="confirmDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header justify-content-center">
-                        </div>
-                        <div class="modal-body">
-                            Una volta rimosso non sarà più visualizzato su Shopwise e non potrà essere recuperato.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="cancella delete-bottone" data-bs-dismiss="modal">Cancella</button>
-                            <button type="button" class="bottone" data-bs-dismiss="modal">Annulla</button>
-                        </div>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                    </div>
+                    <div class="modal-body">
+                        Una volta rimosso non sarà più visualizzato su Shopwise e non potrà essere recuperato.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="cancella delete-bottone" data-bs-dismiss="modal">Cancella</button>
+                        <button type="button" class="bottone" data-bs-dismiss="modal">Annulla</button>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 

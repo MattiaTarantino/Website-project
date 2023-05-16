@@ -24,6 +24,7 @@
 
 body { 
   margin: 0;
+  font-family: system-ui, sans-serif;
   background: linear-gradient(rgb(196, 196, 237), rgba(255, 255, 0, 0.5)),
                     url("../images/sfondo.jpeg") repeat-x;
   background-size: cover ;
@@ -141,27 +142,6 @@ label {
   overflow: hidden;
 }
 
-
-/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
-@media screen and (min-width: 801px) {
-  .spiegazione {
-    flex: 2 0 300px;
-    margin-top: 75px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1200px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #176691;
-
-
-    text-align: center;
-    font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 2rem;
-    color: #EB6A02;
-  }
-}
-
 @media screen and (max-width: 800px) {
   .header-right a {
     text-align: center;
@@ -187,21 +167,47 @@ label {
     font-size: 1rem;
   }
 
-  .spiegazione{
-    flex: 300px;
+  .spiegazione {
+    width: 270px;
+    font-size: 20px !important;
+    padding: 10px !important;
+  }
+}
+
+
+  .spiegazione {
+    flex: 2 0 300px;
     margin-top: 75px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 320px;
-    padding: 15px;
+    max-width: 1200px;
+    padding: 20px;
     border-radius: 10px;
     background-color: #176691;
 
 
     text-align: center;
-    font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 20px;
+    font-size: 2.5rem;
     color: #EB6A02;
-  }
 
-}
+    font-weight: 900;
+
+    --x-offset: -0.0625em;
+    --y-offset: 0.0625em;
+    --stroke: 0.025em;
+    --background-color: white;
+    --stroke-color: lightblue;
+
+    text-shadow:
+
+            var(--x-offset)
+            var(--y-offset)
+            0px
+            var(--background-color),
+
+            calc( var(--x-offset) - var(--stroke) )
+            calc( var(--y-offset) + var(--stroke) )
+            0px
+            var(--stroke-color);
+
+  }

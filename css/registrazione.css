@@ -1,7 +1,3 @@
-body {
-  margin: 0;
-}
-
 .header {
   overflow: hidden;
   background-color: #176791;
@@ -45,9 +41,9 @@ body {
 }
 
 .btn-primary {
-  background-color: white !important;
-  color: #176791 !important;
-  transition: background-color 1s, color 1s !important;
+  background-color: white;
+  color: #176791;
+  transition: background-color 1s, color 1s;
 }
 
 

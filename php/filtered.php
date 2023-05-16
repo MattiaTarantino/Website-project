@@ -10,7 +10,7 @@ require_once('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
-    <title>ProdottiFiltrati</title>
+    <title>ShopWise-ProdottiFiltrati</title>
     <script type="text/javascript" src="../jquery/jquery-3.6.4.js"> </script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -24,7 +24,7 @@ require_once('config.php');
         $search = $_POST['search'];
         $prezzo_minimo = $_POST['prezzo_minimo'];
         $prezzo_massimo = $_POST['prezzo_massimo'];
-        $sql_select = "SELECT * FROM prodotti WHERE categoria = '$search' AND CAST(REPLACE(prezzo, ' €', '') AS UNSIGNED) BETWEEN '$prezzo_minimo' AND '$prezzo_massimo'";                
+        $sql_select = "SELECT * FROM prodotti WHERE (categoria = '$search' OR nome LIKE '$search%') AND CAST(REPLACE(prezzo, ' €', '') AS UNSIGNED) BETWEEN '$prezzo_minimo' AND '$prezzo_massimo'";                
         if (isset($_POST['marca'])) {
             $marca = implode("','", $_POST['marca']);
             $sql_select .= "AND marca IN ('" . $marca . "')";
@@ -110,22 +110,20 @@ require_once('config.php');
                     </div>
                     <script type="text/javascript">
                         $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
-                        mostra = false;
                         $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
-                            $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle();
-                            if (mostra == false){
-                                $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
-                                $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
-                                mostra = true;
-                            }
-                            else{
-                                $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
-                                $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
-                                mostra = false;
-                            }
+                            $("<?php echo "#" . $row['id_prodotto']; ?>").slideToggle(function() {
+                                if ($(this).is(':visible')) {
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                                }
+                                else {
+                                    $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                    $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                                }
                             });
+                        });
                     </script>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
+                    <button type="button" class="btn btn-lg bottone-piccolo btn-success" data-bs-toggle="modal" data-bs-target="#requiredAccount">Prenota</button>
                 </div>
             <?php
             }

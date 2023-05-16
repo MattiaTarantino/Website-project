@@ -2,7 +2,6 @@
 
 include 'config.php';
 session_start();
-$id_utente = $_SESSION['id_utente'];
 
 if (isset($_SESSION['caricato']))
     $message_good[]= "Prodotto inserito con successo";
@@ -17,8 +16,9 @@ if (isset($_SESSION['formato']))
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopWise-PaginaVenditore</title>
+    <title>ShopWise-AggiungiAdmin</title>
     <link rel="stylesheet" href="../css/account.css">
     <style>
         .update-profile{
@@ -30,13 +30,12 @@ if (isset($_SESSION['formato']))
 <div class="header">
     <a href="" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
     <div class="header-right">
-        <a href="prodotti_venditore.php" style="width: 200px" class="prodotti_venditore">I tuoi prodotti</a>
-        <a href="aggiorna_account_venditore.php" class="account">Account</a>
+        <a href="admin.php" style="width: 200px" class="prodotti_venditore">Prodotti</a>
     </div>
 </div>
 
 <div class="update-profile">
-    <form action="aggiunta_prodotto.php" method="post" enctype="multipart/form-data">
+    <form action="aggiunta_prodotto_admin.php" method="post" enctype="multipart/form-data">
         <h1>Inserisci un prodotto su ShopWise!</h1>
         <?php
         if(isset($message_good)){
@@ -79,8 +78,8 @@ if (isset($_SESSION['formato']))
                 <input type="text" name="nome_prodotto"  class="box" required>
                 <span>Marca :</span>
                 <input type="text" name="marca_prodotto" class="box" required>
-                <span style="color: white; user-select: none;" >.</span>
-                <input style="background-color: white" type="text" name="indent" class="box" disabled>
+                <span >Venditore:</span>
+                <input type="text" name="venditore" class="box" required>
                 <span>Batteria :</span>
                 <input type="text" name="batteria_prodotto" placeholder="Opzionale" class="box">
                 <span>CPU :</span>

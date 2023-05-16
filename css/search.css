@@ -75,7 +75,7 @@ body {
 }
 
 .header-right a#prenotazioni {
-  width: 180px;
+  width: 280px;
 }
 
 .header-right a:hover{
@@ -369,5 +369,9 @@ body {
 
   .show-products .box-container .box .details .specifiche{
     font-size: 1.2rem;
+  }
+
+  .bottone-piccolo{
+    font-size: 16px;
   }
 }

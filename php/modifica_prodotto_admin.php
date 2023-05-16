@@ -22,13 +22,13 @@ if(isset($_GET["id"])) {
             $gpu = $old['gpu'];
             $cpu = $old['cpu'];
             $batteria = $old['batteria'];
+            $venditore = $old['venditore'];
         }
 
         if (isset($_POST['modifica_prodotto'])) {
             $update_categoria = $connessione->real_escape_string($_POST['update_categoria']);
             $update_nome_prodotto = $connessione->real_escape_string($_POST['update_nome_prodotto']);
             $update_marca_prodotto = $connessione->real_escape_string($_POST['update_marca_prodotto']);
-            $venditore = $_SESSION['venditore'];
             $update_prezzo_prodotto = $connessione->real_escape_string($_POST['update_prezzo_prodotto']);
             $update_fileName = basename($_FILES["update_foto_prodotto"]["name"]);
             $update_schermo_prodotto = $connessione->real_escape_string($_POST['update_schermo_prodotto']);
@@ -67,7 +67,7 @@ if(isset($_GET["id"])) {
                     } else {
                         $message_bad[] = "Modifica prodotto fallita";
                     }
-            }
+                }
             }
         }
     }
@@ -80,7 +80,7 @@ if(isset($_GET["id"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopWise-ModificaProdotto</title>
+    <title>ShopWise-ModificaProdottoAdmin</title>
     <link rel="stylesheet" href="../css/account.css">
 </head>
 <body>
@@ -160,7 +160,7 @@ if(isset($_GET["id"])) {
             </div>
         </div>
         <input type="submit" value="Modifica prodotto" name="modifica_prodotto" class="btn">
-        <a href="prodotti_venditore.php" class="btn">Torna indietro</a>
+        <a href="admin.php" class="btn">Torna indietro</a>
     </form>
 </div>
 </body>
