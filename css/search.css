@@ -75,7 +75,7 @@ body {
 }
 
 .header-right a#prenotazioni {
-  width: 280px;
+  width: auto;
 }
 
 .header-right a:hover{
@@ -83,7 +83,7 @@ body {
   color: white;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1111px) {
   .header a {
     float: none;
     display: block;
