@@ -37,7 +37,7 @@ $id_utente = $_SESSION['id_utente'];
     <div class="header">
         <a href="logged.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
         <div class="header-right">
-            <a href="#" class="btn" id="prenotazioni">Tutte le prenotazioni</a>
+            <a href="../index.html" class="btn" id="prenotazioni">Torna alla Home</a>
             <a href="aggiorna_account.php" class="account">Account</a>
         </div>
         <div class="header-center">

@@ -278,6 +278,6 @@ body{
 
 @media (max-width:450px) {
    .header-right a {
-
+      margin-inline-start: auto;
    }
 }
