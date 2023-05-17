@@ -10,11 +10,11 @@ require_once('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../css/search.css">
-    <link rel="stylesheet" href="../jquery-ui-1.13.2/jquery-ui.css">
+    <link rel="stylesheet" href="../jquery/jquery-ui-1.13.2/jquery-ui.css">
     <title>ShopWise-RicercaProdotti</title>
     <script type="text/javascript" src="../bootstrap/js/bootstrap.js"> </script>
     <script type="text/javascript" src="../jquery/jquery-3.6.4.js"> </script>
-    <script type="text/javascript" src="../jquery-ui-1.13.2/jquery-ui.js"> </script>
+    <script type="text/javascript" src="../jquery/jquery-ui-1.13.2/jquery-ui.js"> </script>
 </head>
 <body>
     <div class="header">
