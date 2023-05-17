@@ -41,10 +41,10 @@ require_once('config.php');
         $numberQueryLabelResults = mysqli_num_rows($result);
     }
     $prezzo_minimo = 0;
-    $select_prezzo_massimo = "SELECT MAX(CAST(prezzo AS DECIMAL(10,2))) FROM prodotti WHERE categoria = '$search' OR nome LIKE '$search%'";
+    $select_prezzo_massimo = "SELECT MAX(CAST(prezzo AS DECIMAL)) FROM prodotti WHERE categoria = '$search' OR nome LIKE '$search%'";
     $result_prezzo = mysqli_query($connessione, $select_prezzo_massimo);
     $row = $result_prezzo->fetch_assoc();
-    $prezzo_massimo = $row["MAX(CAST(prezzo AS DECIMAL(10,2)))"];
+    $prezzo_massimo = $row["MAX(CAST(prezzo AS DECIMAL))"];
     ?>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -60,6 +60,8 @@ require_once('config.php');
                 stop:function(event, ui) {
                     $('#prezzo_minimo').val(ui.values[0]);
                     $('#prezzo_massimo').val(ui.values[1]); 
+                    dynamic_length_prezzo_minimo();
+                    dynamic_length_prezzo_massimo();
                     loadAjax();
                 }
             });
@@ -141,6 +143,22 @@ require_once('config.php');
                             <label for="prezzo_massimo">€</label>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(document).ready(dynamic_length_prezzo_minimo());
+                        $(document).ready(dynamic_length_prezzo_massimo());
+
+                        function dynamic_length_prezzo_minimo() {
+                            var prezzoMinimoValue = $('#prezzo_minimo').val();
+                            var minimoLength = prezzoMinimoValue.length;
+                            $('#prezzo_minimo').css('width', minimoLength + 1 + 'ch');
+                        }
+                             
+                        function dynamic_length_prezzo_massimo() {
+                            var prezzoMassimoValue = $('#prezzo_massimo').val();
+                            var massimoLength = prezzoMassimoValue.length;
+                            $('#prezzo_massimo').css('width', massimoLength + 1 + 'ch');
+                        }
+                    </script>
                     <hr>
                     <h6>Scegli la marca</h6>
                     <?php
