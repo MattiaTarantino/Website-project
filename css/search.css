@@ -283,6 +283,7 @@ body {
 @media screen and (max-width: 1000px) {
   .ricerca {
     max-width: 15rem;
+    margin-bottom: 6px;
   }
 
   .header-center{
