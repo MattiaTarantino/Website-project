@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="007b0f0e-5c7b-493e-843e-e4a10198e441" name="Changes" comment="modifica">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="007b0f0e-5c7b-493e-843e-e4a10198e441" name="Changes" comment="responsiveness">
       <change beforePath="$PROJECT_DIR$/css/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/search.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +65,7 @@
       <workItem from="1683979914989" duration="11142000" />
       <workItem from="1684248118068" duration="275000" />
       <workItem from="1684268049561" duration="1729000" />
-      <workItem from="1684325681974" duration="3377000" />
+      <workItem from="1684325681974" duration="3836000" />
     </task>
     <task id="LOCAL-00001" summary="modifica">
       <created>1683652819062</created>
@@ -82,7 +81,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684328299135</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="responsiveness">
+      <created>1684332989716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684332989716</updated>
+    </task>
+    <task id="LOCAL-00004" summary="responsiveness">
+      <created>1684333237493</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684333237493</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modifica" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifica" />
+    <MESSAGE value="responsiveness" />
+    <option name="LAST_COMMIT_MESSAGE" value="responsiveness" />
   </component>
 </project>
