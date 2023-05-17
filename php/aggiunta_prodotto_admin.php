@@ -26,14 +26,14 @@ if (isset($connessione)) {
         if($insert){
             $status = 'success';
             $_SESSION['caricato'] = true;
-            header("location: pagina_venditore.php");
+            header("location: admin.php");
         }else{
             $_SESSION['fallito'] = true;
-            header("location: pagina_venditore.php");
+            header("location: aggiungi_admin.php");
         }
     }else{
         $_SESSION['formato'] = true;
-        header("location: pagina_venditore.php");
+        header("location: aggiungi_admin.php");
     }
     $connessione->close();
 }
