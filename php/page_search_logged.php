@@ -56,6 +56,39 @@ require_once('config.php');
         $(document).ready(function () {
             $(".hideDetails").hide();
 
+            var ordinamento = "";
+            var selected_crescente = false;
+            var selected_decrescente = false;
+            $("#crescente").click(function() {
+                if (selected_crescente == false) {
+                    ordinamento = "crescente";
+                    selected_crescente = true;
+                    $(this).addClass('active');
+                    selected_decrescente = false;
+                    $('#decrescente').removeClass('active');
+                }
+                else {
+                    ordinamento = "";
+                    selected_crescente = false;
+                    $(this).removeClass('active');
+                }
+            });
+
+            $("#decrescente").click(function() {
+                if (selected_decrescente == false) {
+                    ordinamento = "decrescente";
+                    selected_decrescente = true;
+                    $(this).addClass('active');
+                    selected_crescente = false;
+                    $('#crescente').removeClass('active');
+                }
+                else {
+                    ordinamento = "";
+                    selected_decrescente = false;
+                    $(this).removeClass('active');
+                }
+            });
+
             var prezzo_minimo = <?php echo $prezzo_minimo; ?>;
             var prezzo_massimo = <?php echo $prezzo_massimo; ?>;
             $('#price_range').slider({
@@ -86,6 +119,7 @@ require_once('config.php');
                  
             function loadAjax() {
                 var action = 'data';
+                var ordine = ordinamento;
                 var marca = get_filter_text('marca');
                 var schermo = get_filter_text('schermo');
                 var ram = get_filter_text('ram');
@@ -98,7 +132,7 @@ require_once('config.php');
                 $.ajax({
                     url: 'filtered_logged.php',
                     method: 'POST',
-                    data: {action:action, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:prezzo_minimo, prezzo_massimo:prezzo_massimo},
+                    data: {action:action, ordine:ordine, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:prezzo_minimo, prezzo_massimo:prezzo_massimo},
                     success:function(data) {
                         $('#ajaxResults').html(data);
                     }
@@ -119,8 +153,9 @@ require_once('config.php');
     }
     else {
     ?>
-        <div class="container py-2 my-3">
-            <button type="button" class="btn btn-dark bottoneFiltri">Filtri</button>
+        <div class="py-2 my-3 paddingBottoneFiltri"></div>
+        <div class="container py-2 my-3 bottoneFiltri">
+            <button type="button" class="btn btn-dark">Filtri</button>
         </div>
     <?php
     }
@@ -137,8 +172,14 @@ require_once('config.php');
                 if ($numberQueryLabelResults > 0) {
                 ?>
                 <div class="card border-secondary rounded-3 p-3 card-filtri">
+                    <h6>Ordina per prezzo</h6>
+                    <div class="d-flex gap-3 filter_check">
+                        <button type="button" class="btn btn-outline-secondary" id="crescente">Crescente</button>
+                        <button type="button" class="btn btn-outline-secondary" id="decrescente">Decrescente</button>
+                    </div>
+                    <hr>
                     <h6>Scegli l'intervallo di prezzo da considerare</h6>
-                <div id="price_range"></div>
+                    <div id="price_range"></div>
                     <div class="d-flex justify-content-between">
                         <div class="prezzo">
                             <input type="text" name="prezzoMinimo" id="prezzo_minimo" class="pointer" value="<?php echo $prezzo_minimo; ?>" readonly> 
@@ -167,190 +208,190 @@ require_once('config.php');
                     </script>
                     <hr>
                     <h6>Scegli la marca</h6>
-                <?php
+                    <?php
                     }
-                ?>
+                    ?>
                     <ul class="list-group border-white">
+                        <?php
+                        $sql_query = "SELECT DISTINCT marca FROM prodotti WHERE (categoria = '$search' OR nome LIKE '$search%') ORDER BY marca";
+                        $filter = mysqli_query($connessione, $sql_query);
+                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                        ?>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['marca']; ?>" id="marca">
+                                <label class="form-check-label" for="marca">
+                                    <?php echo $row['marca']; ?>                                                                                   
+                                </label>
+                            </div>
+                        </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
                     <?php
-                    $sql_query = "SELECT DISTINCT marca FROM prodotti WHERE (categoria = '$search' OR nome LIKE '$search%') ORDER BY marca";
+                    $sql_query = "SELECT DISTINCT schermo FROM prodotti WHERE schermo IS NOT NULL AND schermo != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY schermo";
                     $filter = mysqli_query($connessione, $sql_query);
-                    while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                    $numberQueryResults = mysqli_num_rows($filter);
+                    if ($numberQueryResults > 0) {
                     ?>
-                    <li class="list-group-item">
-                        <div class="form-check">
-                            <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['marca']; ?>" id="marca">
-                            <label class="form-check-label" for="marca">
-                                <?php echo $row['marca']; ?>                                                                                   
-                            </label>
-                        </div>
-                    </li>
+                        <hr>
+                        <h6>Scegli la dimensione dello schermo</h6>
+                        <ul class="list-group border-white">
+                            <?php
+                            while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input filter_check" type="checkbox" value='<?php echo $row['schermo']; ?>' id="schermo">
+                                    <label class="form-check-label" for="schermo">
+                                        <?php echo $row['schermo']; ?>                                                                                       
+                                    </label>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
                     <?php
                     }
                     ?>
-                </ul>
-                <?php
-                $sql_query = "SELECT DISTINCT schermo FROM prodotti WHERE schermo IS NOT NULL AND schermo != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY schermo";
-                $filter = mysqli_query($connessione, $sql_query);
-                $numberQueryResults = mysqli_num_rows($filter);
-                if ($numberQueryResults > 0) {
-                ?>
-                    <hr>
-                    <h6>Scegli la dimensione dello schermo</h6>
+                    <?php
+                    $sql_query = "SELECT DISTINCT ram FROM prodotti WHERE ram IS NOT NULL AND ram != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY LENGTH(ram), ram";
+                    $filter = mysqli_query($connessione, $sql_query);
+                    $numberQueryResults = mysqli_num_rows($filter);
+                    if ($numberQueryResults > 0) {
+                    ?>
+                        <hr>
+                        <h6>Scegli la quantità di ram</h6>
                         <ul class="list-group border-white">
-                        <?php
-                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
-                        ?>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input class="form-check-input filter_check" type="checkbox" value='<?php echo $row['schermo']; ?>' id="schermo">
-                                <label class="form-check-label" for="schermo">
-                                    <?php echo $row['schermo']; ?>                                                                                       
-                                </label>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                <?php
-                }
-                ?>
-                <?php
-                $sql_query = "SELECT DISTINCT ram FROM prodotti WHERE ram IS NOT NULL AND ram != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY LENGTH(ram), ram";
-                $filter = mysqli_query($connessione, $sql_query);
-                $numberQueryResults = mysqli_num_rows($filter);
-                if ($numberQueryResults > 0) {
-                ?>
-                    <hr>
-                    <h6>Scegli la quantità di ram</h6>
+                            <?php
+                            while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['ram']; ?>" id="ram">
+                                    <label class="form-check-label" for="ram">
+                                        <?php echo $row['ram']; ?>                                                                                 
+                                    </label>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    $sql_query = "SELECT DISTINCT spazio FROM prodotti WHERE spazio IS NOT NULL AND spazio != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY LENGTH(spazio), spazio";         
+                    $filter = mysqli_query($connessione, $sql_query);
+                    $numberQueryResults = mysqli_num_rows($filter);
+                    if ($numberQueryResults > 0) {
+                    ?>
+                        <hr>
+                        <h6>Scegli la quantità di spazio</h6>
                         <ul class="list-group border-white">
-                        <?php
-                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
-                        ?>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['ram']; ?>" id="ram">
-                                <label class="form-check-label" for="ram">
-                                    <?php echo $row['ram']; ?>                                                                                 
-                                </label>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                <?php
-                }
-                ?>
-                <?php
-                $sql_query = "SELECT DISTINCT spazio FROM prodotti WHERE spazio IS NOT NULL AND spazio != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY LENGTH(spazio), spazio";         
-                $filter = mysqli_query($connessione, $sql_query);
-                $numberQueryResults = mysqli_num_rows($filter);
-                if ($numberQueryResults > 0) {
-                ?>
-                    <hr>
-                    <h6>Scegli la quantità di spazio</h6>
+                            <?php
+                            while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['spazio']; ?>" id="spazio">
+                                    <label class="form-check-label" for="spazio">
+                                        <?php echo $row['spazio']; ?>                                                         
+                                    </label>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    $sql_query = "SELECT DISTINCT cpu FROM prodotti WHERE cpu IS NOT NULL AND cpu != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY cpu";          
+                    $filter = mysqli_query($connessione, $sql_query);
+                    $numberQueryResults = mysqli_num_rows($filter);
+                    if ($numberQueryResults > 0) {
+                    ?>
+                        <hr>
+                        <h6>Scegli la CPU</h6>
                         <ul class="list-group border-white">
-                        <?php
-                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
-                        ?>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['spazio']; ?>" id="spazio">
-                                <label class="form-check-label" for="spazio">
-                                    <?php echo $row['spazio']; ?>                                                         
-                                </label>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                <?php
-                }
-                ?>
-                <?php
-                $sql_query = "SELECT DISTINCT cpu FROM prodotti WHERE cpu IS NOT NULL AND cpu != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY cpu";          
-                $filter = mysqli_query($connessione, $sql_query);
-                $numberQueryResults = mysqli_num_rows($filter);
-                if ($numberQueryResults > 0) {
-                ?>
-                    <hr>
-                    <h6>Scegli la CPU</h6>
+                            <?php
+                            while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['cpu']; ?>" id="cpu">
+                                    <label class="form-check-label" for="cpu">
+                                        <?php echo $row['cpu']; ?>                                                                                    
+                                    </label>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    $sql_query = "SELECT DISTINCT gpu FROM prodotti WHERE gpu IS NOT NULL AND gpu != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY gpu";          
+                    $filter = mysqli_query($connessione, $sql_query);
+                    $numberQueryResults = mysqli_num_rows($filter);
+                    if ($numberQueryResults > 0) {
+                    ?>
+                        <hr>
+                        <h6>Scegli la GPU</h6>
                         <ul class="list-group border-white">
-                        <?php
-                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
-                        ?>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['cpu']; ?>" id="cpu">
-                                <label class="form-check-label" for="cpu">
-                                    <?php echo $row['cpu']; ?>                                                                                    
-                                </label>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                <?php
-                }
-                ?>
-                <?php
-                $sql_query = "SELECT DISTINCT gpu FROM prodotti WHERE gpu IS NOT NULL AND gpu != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY gpu";          
-                $filter = mysqli_query($connessione, $sql_query);
-                $numberQueryResults = mysqli_num_rows($filter);
-                if ($numberQueryResults > 0) {
-                ?>
-                    <hr>
-                    <h6>Scegli la GPU</h6>
+                            <?php
+                            while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['gpu']; ?>" id="gpu">
+                                    <label class="form-check-label" for="gpu">
+                                        <?php echo $row['gpu']; ?>                                                                                    
+                                    </label>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    $sql_query = "SELECT DISTINCT batteria FROM prodotti WHERE batteria IS NOT NULL AND batteria != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY batteria";          
+                    $filter = mysqli_query($connessione, $sql_query);
+                    $numberQueryResults = mysqli_num_rows($filter);
+                    if ($numberQueryResults > 0) {
+                    ?>
+                        <hr>
+                        <h6>Scegli la batteria</h6>
                         <ul class="list-group border-white">
-                        <?php
-                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
-                        ?>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['gpu']; ?>" id="gpu">
-                                <label class="form-check-label" for="gpu">
-                                    <?php echo $row['gpu']; ?>                                                                                    
-                                </label>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                <?php
-                }
-                ?>
-                <?php
-                $sql_query = "SELECT DISTINCT batteria FROM prodotti WHERE batteria IS NOT NULL AND batteria != '' AND (categoria = '$search' OR nome LIKE '$search%') ORDER BY batteria";          
-                $filter = mysqli_query($connessione, $sql_query);
-                $numberQueryResults = mysqli_num_rows($filter);
-                if ($numberQueryResults > 0) {
-                ?>
-                    <hr>
-                    <h6>Scegli la batteria</h6>
-                        <ul class="list-group border-white">
-                        <?php
-                        while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
-                        ?>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['batteria']; ?>" id="batteria">
-                                <label class="form-check-label" for="batteria">
-                                    <?php echo $row['batteria']; ?>                                                                                    
-                                </label>
-                            </div>
-                        </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                <?php
-                }
-                ?>
-            </div>
+                            <?php
+                            while ($row = $filter->fetch_array(MYSQLI_ASSOC)) {
+                            ?>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input filter_check" type="checkbox" value="<?php echo $row['batteria']; ?>" id="batteria">
+                                    <label class="form-check-label" for="batteria">
+                                        <?php echo $row['batteria']; ?>                                                                                    
+                                    </label>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
             <div class="col-xl-9" id="ajaxResults">
                 <div class="py-2 my-3 text-center">

@@ -158,6 +158,10 @@ body {
   overflow: hidden;
 } 
 
+.bottoneFiltri {
+  display: none;
+}
+
 .show-products .box-container{
   display: grid;
   grid-template-columns: repeat(auto-fit, 22rem);
@@ -298,10 +302,6 @@ body {
 
 
 @media screen and (min-width: 1200px) {
-  .bottoneFiltri {
-    display: none;
-  }
-
   #slideFiltri {
     display: block !important;
   }
@@ -309,6 +309,14 @@ body {
 
 
 @media screen and (max-width: 1200px) {
+  .bottoneFiltri {
+    display: block;
+  }
+
+  .paddingBottoneFiltri{
+    display: none;
+  }
+
   #slideFiltri {
     display: none;
   }
