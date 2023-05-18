@@ -60,10 +60,10 @@ require_once('config.php');
         if (isset($_POST['ordine'])) {
             $ordine = $_POST['ordine'];
             if ($ordine == "crescente") {
-                $sql_select = "ORDER BY CAST(prezzo AS DECIMAL)";
+                $sql_select .= "ORDER BY CAST(prezzo AS DECIMAL)";
             }
             if ($ordine == "decrescente") {
-                $sql_select = "ORDER BY CAST(prezzo AS DECIMAL) DESC";
+                $sql_select .= "ORDER BY CAST(prezzo AS DECIMAL) DESC";
             }
         } 
         $result = mysqli_query($connessione, $sql_select);
