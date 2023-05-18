@@ -30,7 +30,7 @@ if (isset($_SESSION['formato']))
 <div class="header">
     <a href="" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
     <div class="header-right">
-        <a href="prodotti_venditore.php" style="width: 200px" class="prodotti_venditore">I tuoi prodotti</a>
+        <a href="prodotti_venditore.php" style="width: 185px" class="prodotti_venditore">I tuoi prodotti</a>
         <a href="aggiorna_account_venditore.php" class="account">Account</a>
     </div>
 </div>

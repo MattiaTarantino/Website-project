@@ -3,8 +3,6 @@
 include 'config.php';
 session_start();
 
-if (isset($_SESSION['caricato']))
-    $message_good[]= "Prodotto inserito con successo";
 if (isset($_SESSION['fallito']))
     $message_bad[]= "Caricamento del prodotto fallit, riprova ancora";
 if (isset($_SESSION['formato']))
@@ -38,11 +36,6 @@ if (isset($_SESSION['formato']))
     <form action="aggiunta_prodotto_admin.php" method="post" enctype="multipart/form-data">
         <h1>Inserisci un prodotto su ShopWise!</h1>
         <?php
-        if(isset($message_good)){
-            foreach($message_good as $message){
-                echo '<div class="message_good">'.$message.'</div>';
-            }
-        }
         if(isset($message_bad)){
             foreach($message_bad as $message){
                 echo '<div class="message_bad">'.$message.'</div>';
@@ -92,7 +85,6 @@ if (isset($_SESSION['formato']))
     </form>
 </div>
 </body>
-<?php unset($_SESSION['caricato']); ?>
 <?php unset($_SESSION['fallito']); ?>
 <?php unset($_SESSION['formato']); ?>
 </html>

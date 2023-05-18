@@ -50,6 +50,39 @@ require_once('config.php');
         $(document).ready(function () {
             $(".hideDetails").hide();
 
+            var ordinamento = "";
+            var selected_crescente = false;
+            var selected_decrescente = false;
+            $("#crescente").click(function() {
+                if (selected_crescente == false) {
+                    ordinamento = "crescente";
+                    selected_crescente = true;
+                    $(this).addClass('active');
+                    selected_decrescente = false;
+                    $('#decrescente').removeClass('active');
+                }
+                else {
+                    ordinamento = "";
+                    selected_crescente = false;
+                    $(this).removeClass('active');
+                }
+            });
+
+            $("#decrescente").click(function() {
+                if (selected_decrescente == false) {
+                    ordinamento = "decrescente";
+                    selected_decrescente = true;
+                    $(this).addClass('active');
+                    selected_crescente = false;
+                    $('#crescente').removeClass('active');
+                }
+                else {
+                    ordinamento = "";
+                    selected_decrescente = false;
+                    $(this).removeClass('active');
+                }
+            });
+
             var prezzo_minimo = <?php echo $prezzo_minimo; ?>;
             var prezzo_massimo = <?php echo $prezzo_massimo; ?>;
             $('#price_range').slider({
@@ -80,6 +113,7 @@ require_once('config.php');
                  
             function loadAjax() {
                 var action = 'data';
+                var ordine = ordinamento;
                 var marca = get_filter_text('marca');
                 var schermo = get_filter_text('schermo');
                 var ram = get_filter_text('ram');
@@ -92,7 +126,7 @@ require_once('config.php');
                 $.ajax({
                     url: 'filtered.php',
                     method: 'POST',
-                    data: {action:action, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:prezzo_minimo, prezzo_massimo:prezzo_massimo},
+                    data: {action:action, ordine:ordine, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:prezzo_minimo, prezzo_massimo:prezzo_massimo},
                     success:function(data) {
                         $('#ajaxResults').html(data);
                     }
@@ -113,8 +147,9 @@ require_once('config.php');
     }
     else {
     ?>
-        <div class="container py-2 my-3">
-            <button type="button" class="btn btn-dark bottoneFiltri">Filtri</button>
+        <div class="py-2 my-3 paddingBottoneFiltri"></div>
+        <div class="container py-2 my-3 bottoneFiltri">
+            <button type="button" class="btn btn-dark">Filtri</button>
         </div>
     <?php
     }
@@ -131,6 +166,12 @@ require_once('config.php');
                 if ($numberQueryLabelResults > 0) {
                 ?>
                 <div class="card border-secondary rounded-3 p-3 card-filtri">
+                    <h6>Ordina per prezzo</h6>
+                    <div class="d-flex gap-3 filter_check">
+                        <button type="button" class="btn btn-outline-secondary" id="crescente">Crescente</button>
+                        <button type="button" class="btn btn-outline-secondary" id="decrescente">Decrescente</button>
+                    </div>
+                    <hr>
                     <h6>Scegli l'intervallo di prezzo da considerare</h6>
                     <div id="price_range"></div>
                     <div class="d-flex justify-content-between">
