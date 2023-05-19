@@ -26,14 +26,14 @@ $result = mysqli_query($connessione, $sql_insert);
     <div class="header">
         <a href="logged.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
     </div>
-    <div class="d-flex">
+    <div class="d-flex px-3">
         <div class="container">
             <div class="mb-4 text-center">
                 <img src="../images/confirmation.png">
             </div>
             <div class="text-center">
                 <h3>Prenotazione Effettuata!</h3>
-                <p>Grazie per aver effettuato la tua prenotazione su ShopwWise!</p>
+                <p>Grazie per aver effettuato la tua prenotazione su ShopWise!</p>
                 <a href="prodotti_utente.php" class="btn">Le tue prenotazioni</a>
             </div>
         </div>

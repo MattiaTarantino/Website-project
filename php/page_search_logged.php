@@ -47,10 +47,10 @@ require_once('config.php');
         $numberQueryLabelResults = mysqli_num_rows($result);
     } 
     $prezzo_minimo = 0;
-    $select_prezzo_massimo = "SELECT MAX(CAST(prezzo AS DECIMAL)) FROM prodotti WHERE categoria = '$search' OR nome LIKE '$search%'";
+    $select_prezzo_massimo = "SELECT MAX(CAST(REPLACE(prezzo, '€', '') AS DECIMAL)) FROM prodotti WHERE categoria = '$search' OR nome LIKE '$search%'";
     $result_prezzo = mysqli_query($connessione, $select_prezzo_massimo);
     $row = $result_prezzo->fetch_assoc();
-    $prezzo_massimo = $row["MAX(CAST(prezzo AS DECIMAL))"];
+    $prezzo_massimo = $row["MAX(CAST(REPLACE(prezzo, '€', '') AS DECIMAL))"];
     ?>
     <script type="text/javascript">
         $(document).ready(function () {

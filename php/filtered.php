@@ -28,7 +28,7 @@ require_once('config.php');
         if (isset($_POST['prezzo_massimo'])) {
             $prezzo_massimo = $_POST['prezzo_massimo'];
         }
-        $sql_select = "SELECT * FROM prodotti WHERE (categoria = '$search' OR nome LIKE '$search%') AND CAST(prezzo AS DECIMAL) BETWEEN '$prezzo_minimo' AND '$prezzo_massimo'";            
+        $sql_select = "SELECT * FROM prodotti WHERE (categoria = '$search' OR nome LIKE '$search%') AND CAST(REPLACE(prezzo, '€', '') AS DECIMAL) BETWEEN '$prezzo_minimo' AND '$prezzo_massimo'";            
         if (isset($_POST['marca'])) {
             $marca = implode("','", $_POST['marca']);
             $sql_select .= "AND marca IN ('" . $marca . "')";
@@ -60,10 +60,10 @@ require_once('config.php');
         if (isset($_POST['ordine'])) {
             $ordine = $_POST['ordine'];
             if ($ordine == "crescente") {
-                $sql_select .= "ORDER BY CAST(prezzo AS DECIMAL)";
+                $sql_select .= "ORDER BY CAST(REPLACE(REPLACE(prezzo, ',', '.'), '€', '') AS DECIMAL(10,2))";
             }
             if ($ordine == "decrescente") {
-                $sql_select .= "ORDER BY CAST(prezzo AS DECIMAL) DESC";
+                $sql_select .= "ORDER BY CAST(REPLACE(REPLACE(prezzo, ',', '.'), '€', '') AS DECIMAL(10,2)) DESC";
             }
         } 
         $result = mysqli_query($connessione, $sql_select);
