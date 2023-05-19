@@ -143,19 +143,17 @@ $id_utente = $_SESSION['id_utente'];
                     </div>
                     <script type="text/javascript">
                         $("<?php echo "#" . "less". $row['id_prenotazione']; ?>").hide();
-                        mostra = false;
                         $("<?php echo "." . "testo" . $row['id_prenotazione']; ?>").click(function() {
-                            $("<?php echo "#" . $row['id_prenotazione']; ?>").slideToggle();
-                            if (mostra == false){
-                                $("<?php echo "#" . "less". $row['id_prenotazione']; ?>").show();
-                                $("<?php echo "#" . "more". $row['id_prenotazione']; ?>").hide();
-                                mostra = true;
-                            }
-                            else{
-                                $("<?php echo "#" . "less". $row['id_prenotazione']; ?>").hide();
-                                $("<?php echo "#" . "more". $row['id_prenotazione']; ?>").show();
-                                mostra = false;
-                            }
+                            $("<?php echo "#" . $row['id_prenotazione']; ?>").slideToggle(function() {
+                                if ($(this).is(':visible')) {
+                                    $("<?php echo "#" . "less". $row['id_prenotazione']; ?>").show();
+                                    $("<?php echo "#" . "more". $row['id_prenotazione']; ?>").hide();
+                                }
+                                else {
+                                    $("<?php echo "#" . "less". $row['id_prenotazione']; ?>").hide();
+                                    $("<?php echo "#" . "more". $row['id_prenotazione']; ?>").show();
+                                }
+                            });
                         });
                     </script>
                 </div>

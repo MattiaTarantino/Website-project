@@ -108,19 +108,17 @@ else {
                 </div>
                 <script type="text/javascript">
                     $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
-                    mostra = false;
                     $("<?php echo "." . "testo" . $row['id_prodotto']; ?>").click(function() {
-                        $("<?php echo "#" . "specifiche". $row['id_prodotto']; ?>").slideToggle();
-                        if (mostra == false){
-                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
-                            $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
-                            mostra = true;
-                        }
-                        else{
-                            $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
-                            $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
-                            mostra = false;
-                        }
+                        $("<?php echo "#" . "specifiche" . $row['id_prodotto']; ?>").slideToggle(function() {
+                            if ($(this).is(':visible')) {
+                                $("<?php echo "#" . "less". $row['id_prodotto']; ?>").show();
+                                $("<?php echo "#" . "more". $row['id_prodotto']; ?>").hide();
+                            }
+                            else {
+                                $("<?php echo "#" . "less". $row['id_prodotto']; ?>").hide();
+                                $("<?php echo "#" . "more". $row['id_prodotto']; ?>").show();
+                            }
+                        });
                     });
                 </script>
                 <a href="modifica_prodotto.php?id=<?php echo $row['id_prodotto']?>" class="btn btn-primary btn-lg">Modifica</a>
