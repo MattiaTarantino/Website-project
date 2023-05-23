@@ -23,7 +23,7 @@ if(isset($_SESSION['email_alert'])){
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap");
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-            @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@500&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
             body{
                 background-color: #e98635;
             }

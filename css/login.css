@@ -13,7 +13,7 @@
 }
 
 .form-title {
-    font-size: 1.5em;
+    font-size: 1.7em;
     line-height: 1.75rem;
     font-weight: 600;
     text-align: center;
@@ -55,7 +55,7 @@
 
 .signup-link {
     color: #6B7280;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25rem;
     text-align: center;
 }
@@ -72,5 +72,5 @@
     text-align: center;
     background-color: #e74c3c;
     font-size: 17px;
-    font-family: 'Wix Madefor Text', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
