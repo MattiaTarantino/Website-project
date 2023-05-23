@@ -1,6 +1,10 @@
 <?php
 require_once('config.php');
 session_start();
+
+if ($_SESSION['email'] != "admin@admin.com")
+    header("location: ../index.html" )
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +21,7 @@ session_start();
 </head>
 <body>
 <div class="header">
-    <a href="admin.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
+    <a href="logout.php" class="logo"><img src="../images/ShopWise-logo-header.png"></a>
     <div class="header-right">
         <a href="aggiungi_admin.php" class="registrati">Aggiungi</a>
     </div>

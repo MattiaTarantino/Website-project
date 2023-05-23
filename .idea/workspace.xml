@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="007b0f0e-5c7b-493e-843e-e4a10198e441" name="Changes" comment="bug fixing">
+    <list default="true" id="007b0f0e-5c7b-493e-843e-e4a10198e441" name="Changes" comment="fonts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/check_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/check_login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
       <workItem from="1684268049561" duration="1729000" />
       <workItem from="1684325681974" duration="4103000" />
       <workItem from="1684333679922" duration="1951000" />
-      <workItem from="1684860093114" duration="2278000" />
+      <workItem from="1684860093114" duration="5174000" />
     </task>
     <task id="LOCAL-00001" summary="modifica">
       <created>1683652819062</created>
@@ -125,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684335045842</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fonts">
+      <created>1684865909600</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684865909600</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +167,7 @@
     <MESSAGE value="modifica" />
     <MESSAGE value="responsiveness" />
     <MESSAGE value="bug fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixing" />
+    <MESSAGE value="fonts" />
+    <option name="LAST_COMMIT_MESSAGE" value="fonts" />
   </component>
 </project>

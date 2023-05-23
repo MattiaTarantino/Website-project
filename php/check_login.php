@@ -21,7 +21,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['indirizzo'] = $row['indirizzo'];
 
-                header("location: logged.php");
+                if ($row['email'] == "admin@admin.com")
+                    header("location: admin.php");
+                else
+                    header("location: logged.php");
             }
             else{
                 $_SESSION['password_alert'] = true;
