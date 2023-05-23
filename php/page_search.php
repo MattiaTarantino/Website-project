@@ -99,12 +99,12 @@ require_once('config.php');
                 }
             });
 
-            function get_filter_text(text_id) {
-                var filterData = [];
-                $('#' + text_id + ':checked').each(function() {
-                    filterData.push($(this).val());
+            function filter_on(filter_id) {
+                var filterArray = [];
+                $('#' + filter_id + ':checked').each(function() {
+                    filterArray.push($(this).val());
                 });
-                return filterData;
+                return filterArray;
             }           
 
             $(".filter_check").click(function() {
@@ -112,21 +112,20 @@ require_once('config.php');
             });
                  
             function loadAjax() {
-                var action = 'data';
                 var ordine = ordinamento;
-                var marca = get_filter_text('marca');
-                var schermo = get_filter_text('schermo');
-                var ram = get_filter_text('ram');
-                var spazio = get_filter_text('spazio');
-                var cpu = get_filter_text('cpu');
-                var gpu = get_filter_text('gpu');
-                var batteria = get_filter_text('batteria');
+                var marca = filter_on('marca');
+                var schermo = filter_on('schermo');
+                var ram = filter_on('ram');
+                var spazio = filter_on('spazio');
+                var cpu = filter_on('cpu');
+                var gpu = filter_on('gpu');
+                var batteria = filter_on('batteria');
                 var prezzo_minimo = $('#prezzo_minimo').val();
                 var prezzo_massimo = $('#prezzo_massimo').val();
                 $.ajax({
                     url: 'filtered.php',
                     method: 'POST',
-                    data: {action:action, ordine:ordine, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, search:'<?php echo $search; ?>', prezzo_minimo:prezzo_minimo, prezzo_massimo:prezzo_massimo},
+                    data: {search:'<?php echo $search; ?>', ordine:ordine, marca:marca, schermo:schermo, ram:ram, spazio:spazio, cpu:cpu, gpu:gpu, batteria:batteria, prezzo_minimo:prezzo_minimo, prezzo_massimo:prezzo_massimo},
                     success:function(data) {
                         $('#ajaxResults').html(data);
                     }

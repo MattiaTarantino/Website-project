@@ -20,7 +20,7 @@ require_once('config.php');
 </head>
 <body>
     <?php
-    if (isset($_POST['action']) && isset($_POST['search'])) {
+    if (isset($_POST['search'])) {
         $search = $_POST['search'];
         if (isset($_POST['prezzo_minimo'])) {
             $prezzo_minimo = $_POST['prezzo_minimo'];
