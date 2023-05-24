@@ -37,9 +37,9 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
         }
         ?>
         <form action="conferma.php" method="post">
-        <div class="text-center">
-                    <h3>Rivedi le informazioni e completa l'ordine!</h3>
-                </div>
+            <div class="text-center">
+                <h3>Rivedi le informazioni e completa l'ordine!</h3>
+            </div>
             <div class="flex">
                 <div class="inputBox">
                     <span>Nome e Cognome :</span>
