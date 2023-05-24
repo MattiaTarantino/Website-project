@@ -6,6 +6,9 @@ $id_prodotto = "";
 foreach ($_POST as $index => $var) {
     $id_prodotto .= $var;
 }
+
+header("Cache-Control: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 ?>
 
 <!DOCTYPE html>
