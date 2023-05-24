@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 $_SESSION['indirizzo'] = $row['indirizzo'];
                 $_SESSION['venditore'] = $row['venditore'];
 
-                header("location: pagina_venditore.php");
+                header("location: prodotti_venditore.php");
             }
             else{
                 $_SESSION['password_alert'] = true;

@@ -39,6 +39,6 @@ if (isset($connessione)) {
         $_SESSION['indirizzo'] = $indirizzo;
         $_SESSION['venditore'] = $venditore;
 
-        header("location: pagina_venditore.php");
+        header("location: prodotti_venditore.php");
     }
 }
